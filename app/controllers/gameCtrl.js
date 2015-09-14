@@ -23,6 +23,7 @@ define([
     //console.log("game", game);
     function preload() {
       this.scale.pageAlignHorizontally = true;
+      game.load.image("background", "images/beaker.jpg");
       game.load.spritesheet("Cl", "images/Cl.jpg", 60, 59);
       game.load.spritesheet("Na", "images/Na.jpg", 60, 59);
       game.load.spritesheet("NaCl", "images/NaCl.jpg", 60, 59);
@@ -30,6 +31,10 @@ define([
     }
     function create() {
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+      game.add.sprite(game.world.centerX, game.world.centerY, 'background');
+
+        
 
        //static box
       this.NaCl = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'Cl');
@@ -76,7 +81,7 @@ define([
                                                         currentSprite.input.draggable = false; 
                                                         currentSprite.position.copyFrom(endSprite.position); 
                                                         currentSprite.anchor.setTo(endSprite.anchor.x, endSprite.anchor.y); 
-                                                      } )
+                                                      } );
         if ( !tophat ) {
           currentSprite.position.copyFrom(currentSprite.originalPosition);
         }

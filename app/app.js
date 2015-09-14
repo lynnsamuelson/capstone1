@@ -5,12 +5,14 @@ define([
   "angularfire",
   "angularRoute",
   "angularFilter",
-  "controllers/gameCtrl"
-], function(phaser, angular, bootstrap, angularfire, angularRoute, filter, gameCtrl) {
+  "controllers/gameCtrl",
+  "controllers/home"
+], function(phaser, angular, bootstrap, angularfire, angularRoute, filter, gameCtrl, home) {
   return angular.module("balanceItApp", [
     "ngRoute",
     "firebase",
-    "balanceItApp.gameCtrl"
+    "balanceItApp.gameCtrl",
+    "balanceItApp.home"
   ]).
   config(["$routeProvider", function($routeProvider) {
     $routeProvider.otherwise({redirectTo: "/"});
