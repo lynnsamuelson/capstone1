@@ -8,6 +8,7 @@ require.config({
     jquery: "../lib/bower_components/jquery/dist/jquery.min",
     angular: "../lib/bower_components/angular/angular.min",
     firebase: "../lib/bower_components/firebase/firebase",
+     q: "../lib/bower_components/q/q",
   },
   shim: {
     "angularfire" : ["angular", "firebase"],

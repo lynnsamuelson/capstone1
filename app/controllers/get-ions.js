@@ -15,19 +15,37 @@ define([
    .controller("ions", ["$firebaseArray", function($firebaseArray) {
     //console.log("got to getIons");
 
-     
-
-    function getCompounds() {
-      var compounds = new Firebase("https://balanceit.firebaseio.com/Compounds");
-      compounds.once("value", function(snapshot) {
-          var gameCompounds = snapshot.val();
-          console.log("compounds",gameCompounds);
+     function getIons() {
+      var ions = new Firebase("https://balanceit.firebaseio.com/Ions");
+      ions.once("value", function(snapshot) {
+          var gameIons = snapshot.val();
+          //console.log("ions", gameIons);
         });
     }
 
-    //getIons();
+    function getCompounds() {
+      var compounds = new Firebase("https://balanceit.firebaseio.com/Compounds");
+      var thing = $firebaseArray(compounds);
+      console.log(thing);
+    }
 
-    //getCompounds();
+
+
+    var getEquation = function () {
+      var compounds = new Firebase("https://balanceit.firebaseio.com/Compounds");
+      var data = $firebaseArray(compounds);
+      var formula = [];
+      angular.forEach (data, function (value, key) {
+        this.push(key + ":" + value);
+      }, formula);
+      return formula;
+    };
+
+    console.log(getEquation());
+
+    getIons();
+
+    getCompounds();
   }]);
 });
  
