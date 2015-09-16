@@ -1,0 +1,80 @@
+
+{
+  "Compounds" : {
+    "sodiumChloride" : {
+      "anion" : "Cl",
+      "cation" : "Na",
+      "formula" : "NaCl",
+      "solidInWater" : false
+    },
+    "litiumBromide" : {
+      "anion" : "Br",
+      "cation" : "Li",
+      "formula" : "LiBr",
+      "solidInWater" : false
+    },
+    "magnisiumChloride" : {
+      "anion" : "Cl",
+      "cation" : "Mg",
+      "formula" : "MgCl2",
+      "solidInWater" : false
+    },
+    "magnisiumBromide" : {
+      "anion" : "Br",
+      "cation" : "Mg",
+      "formula" : "MgBr2",
+      "solidInWater" : false
+    },
+    "sodiumBromide" : {
+      "anion" : "Br",
+      "cation" : "Na",
+      "formula" : "NaBr",
+      "solidInWater" : false
+    },
+    "litiumChloride" : {
+      "anion" : "Cl",
+      "cation" : "Li",
+      "formula" : "LiCl",
+      "solidInWater" : false
+    },
+    "magnisiumSulfate" : {
+      "anion" : "SO4",
+      "cation" : "Mg",
+      "formula" : "MgSO4",
+      "solidInWater" : false
+    },
+    "sodiumSulfate" : {
+      "anion" : "SO4",
+      "cation" : "Na",
+      "formula" : "Na2SO4",
+      "solidInWater" : false
+    }
+
+  },
+  "Ions" : {
+    "sodium" : {
+      "charge" : 1,
+      "formula" : "Na"
+    },
+    "litium" : {
+      "charge" : 1,
+      "formula" : "Li"
+    },
+    "magnisium" : {
+      "charge" : 1,
+      "formula" : "Mg"
+    },
+    "chloride" : {
+      "charge" : -1,
+      "formula" : "Cl"
+    },
+    "bromide" : {
+      "charge" : -1,
+      "formula" : "Br"
+    },
+    "sulfate" : {
+      "charge" : -2,
+      "formula" : "SO4"
+    }
+  }
+}

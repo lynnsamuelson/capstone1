@@ -28,7 +28,7 @@ require([
   ], function(angular, app) {
     var $appTarget = angular.element(document.getElementsByTagName("body"[0]));
     angular.element($appTarget).ready(function() {
-      console.log("found requirejs");
+      //console.log("found requirejs");
       // bootstrap the app manually
       angular.bootstrap(document, ["balanceItApp"]);
     });

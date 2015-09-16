@@ -14,7 +14,7 @@ define([
   }])
 
   .controller("homeCtrl", ["$firebaseArray", function($firebaseArray) {
-    console.log("got to home");
+    //console.log("got to home");
 
 
   }]);
