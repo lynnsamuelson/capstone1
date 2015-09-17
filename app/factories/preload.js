@@ -7,7 +7,7 @@ define([
 
 
       var game = gameFactory;
-      var compoundsFromFactory = getCompounds.goGetCompounds();
+      //var compoundsFromFactory = getCompounds.goGetCompounds();
 
       return function () {
         this.scale.pageAlignHorizontally = true;
@@ -28,18 +28,19 @@ define([
         game.load.spritesheet("SO4", "images/SO4.jpg", 112, 59);
         game.load.spritesheet("arrows", "images/arrows.jpg", 112, 59);
         game.load.spritesheet("beaker", "images/beaker.jpg", 149, 60);
-        game.load.spritesheet("box", "images/emptyBox.jpg", 112, 59);
-        game.load.spritesheet("boxNa", "images/emptyBox.jpg", 112, 59);
+        game.load.spritesheet("anionBox", "images/emptyBox.jpg", 112, 59);
+        game.load.spritesheet("cationBox", "images/emptyBox.jpg", 112, 59);
         game.load.spritesheet("water", "images/water.jpg", 112, 59);
         
 
-        game.formulaArray = [];
-        compoundsFromFactory.then (function(data) {
-          angular.forEach (data, function (value) {
-            console.log("value", value);
-            game.formulaArray.push(value);
-          });
-        });
+        // game.formulaArray = [];
+        // compoundsFromFactory.then (function(data) {
+        //   angular.forEach (data, function (value) {
+        //     //console.log("value", value);
+        //     game.formulaArray.push(value);
+        //     //console.log(game.formulaArray);
+        //   });
+        // });
       };
     }]);
 });

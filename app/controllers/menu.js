@@ -21,9 +21,9 @@ define([
     game.state.add('menu', {preload:preload, create:create});
     game.state.start('menu');
     //{ preload: preload, create: create, update: update }
-    var compoundsFromFactory = getCompounds.goGetCompounds();
+    //var compoundsFromFactory = getCompounds.goGetCompounds();
     
-    
+
     
 
     function create() {
