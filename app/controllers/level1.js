@@ -13,10 +13,32 @@ define([
     });
   }])
 
-  .controller("level1", ["$firebaseArray", "getCompounds", "$scope", "$controller", function($firebaseArray, getCompounds, $scope, $controller) {
-    var menuScope = $scope.$new();
-    $controller('menuCtrl', {$scope : menuScope});
-    //console.log(game.formulaArray);
+  .controller("level1", ["$firebaseArray", "$scope", "$controller", "gameFactory", 
+    function($firebaseArray, $scope, $controller, gameFactory) {
+      console.log("found Level 1");
+      
+      
+      //var game = gameFactory;
+      //game.state.add('menu', {preload:preload, create:create});
+      //game.state.add('levelOne', game.levelOne);
+
+
+    //   game.LevelOne = function (game) { };
+    //   game.LevelOne.prototype = {
+
+    //     create: function () {},
+    //     update: function () {},
+    //     render: function () {},
+    //     shutdown: function () {}
+
+    // };
+
+
+      
+    //var menuScope = $scope.$new();
+    //$controller('menuCtrl', {$scope : menuScope});
+      //console.log(game.formulaArray);
+
 
     // function create() {
     //     this.game.physics.startSystem(Phaser.Physics.ARCADE);
