@@ -114,7 +114,7 @@ define([
      }
 
     function update() {
-      if (this.cation.input.draggable === false) {
+      if (this.cation.input.draggable === false && this.anion.input.draggable === false) {
         if(formulaArray.length > 1) {
           goodJob = game.add.text(330, 250, "Good Job");
           button = game.add.button(200, 200, 'button', nextProblem, this);
