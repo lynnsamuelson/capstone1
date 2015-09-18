@@ -5,27 +5,33 @@ define([
   "angularfire",
   "angularRoute",
   "angularFilter",
+  "factories/uid",
   "factories/gameFactory",
   "factories/preload",
+  "controllers/auth",
+  "controllers/username",
   "controllers/gameCtrl",
   "controllers/home",
   "controllers/get-ions",
   "factories/getCompounds",
   "controllers/menu",
-  "controllers/level1",
-], function(phaser, angular, bootstrap, angularfire, angularRoute, filter, gameFactory,
- preload, gameCtrl, home, getIons, getCompound, menu, level1) {
+  "controllers/level1"
+], function(phaser, angular, bootstrap, angularfire, angularRoute, filter, uid, gameFactory,
+ preload, auth, username, gameCtrl, home, getIons, getCompound, menu, level1) {
   return angular.module("balanceItApp", [
     "ngRoute",
     "firebase",
+    "balanceItApp.uid",
     "balanceItApp.gameFactory",
     "balanceItApp.preload",
+    "balanceItApp.auth",
+    "balanceItApp.username",
     "balanceItApp.gameCtrl",
     "balanceItApp.home",
     "balanceItApp.getIons",
     "balanceItApp.getCompounds",
     "balanceItApp.menu",
-    "balanceItApp.level1",
+    "balanceItApp.level1"
   ]).
   config(["$routeProvider", function($routeProvider) {
     $routeProvider.otherwise({redirectTo: "/"});
