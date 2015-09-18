@@ -13,8 +13,8 @@ define([
     });
   }])
 
-  .controller("level1", ["$firebaseArray", "$scope", "$controller", "gameFactory", "preload", "getCompounds", "getFormulaArray",
-    function($firebaseArray, $scope, $controller, gameFactory, preload, getCompounds, getFormulaArray) {
+  .controller("level1", ["$firebaseArray", "$scope", "$controller", "gameFactory", "preload", "getCompounds", 
+    function($firebaseArray, $scope, $controller, gameFactory, preload, getCompounds) {
       //console.log("found Level 1");
       var game = gameFactory;
       var cation;
@@ -26,7 +26,7 @@ define([
 
       //console.log("game", game);
 
-      game.state.add('level1', {preload:preload, create:create});
+      game.state.add('level1', {preload:preload, create:create, update:update});
       
       // getFormulaArray.getArray();
       // console.log("game.formulaArray", game.formulaArray);
@@ -35,16 +35,14 @@ define([
      getCompounds.goGetCompounds()
         .then(function (data) {
           angular.forEach (data, function (value) {
-            console.log("value", value);
             formulaArray.push(value);
           });
-          console.log("formulaArray", formulaArray);
           game.state.start('level1');
         });
 
 
 
-     function create() {
+    function create() {
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
       game.add.sprite(game.world.x, game.world.y, 'background');
@@ -57,24 +55,11 @@ define([
       this.water = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'water');
       this.water.anchor.setTo(2.3, 5);
 
-
-
-      //Get data from factory (firebase)
-      // game.formulaArray = [];
-      //   compoundsFromFactory.then (function(data) {
-      //     angular.forEach (data, function (value) {
-      //       //console.log("value", value);
-      //       game.formulaArray.push(value);
-      //     });
-        //console.log("array", game.formulaArray[0].anion);
-
-        anion = formulaArray[0].anion;
-        cation = formulaArray[0].cation;
-        formula = formulaArray[0].formula;
-        //console.log("anion", anion);
+      anion = formulaArray[0].anion;
+      cation = formulaArray[0].cation;
+      formula = formulaArray[0].formula;
+      //console.log("anion", anion);
         
-        console.log("anion", anion);
-
         //static box for the formula
         this.formula = this.game.add.sprite(this.game.world.centerX, this.game.world.height, formula);
         this.formula.anchor.setTo(2.5, 4);
@@ -125,29 +110,25 @@ define([
           stopDrag(currentSprite, this.cationBox);
         }, this);
           //console.log(this.cationBox.position)
-         console.log("cation",cation);
-          if (this.cation.input.draggable === true) {
-            console.log("good job");
-          }
-
-          function update() {
-            
-          }
-
-      //}.bind(this)
-      //);
          
-       
-     
-      
-
-
-
-
-
-    
-
      }
+
+    function update() {
+      if (this.cation.input.draggable === false) {
+        if(formulaArray.length > 1) {
+          goodJob = game.add.text(330, 250, "Good Job");
+          button = game.add.button(200, 200, 'button', nextProblem, this);
+          button.scale.setTo(0.5);
+          function nextProblem () {
+            formulaArray.shift();
+            console.log("shorter formulaArray", formulaArray.length);
+            game.state.start('level1');
+          }
+        } else {
+            finished = game.add.text(200, 230, "Finished Level 1");
+        }
+      }
+    }
   }]); 
 }); 
 
