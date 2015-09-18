@@ -13,16 +13,35 @@ define([
     });
   }])
 
-  .controller("level1", ["$firebaseArray", "$scope", "$controller", "gameFactory", "preload", "getCompounds",
-    function($firebaseArray, $scope, $controller, gameFactory, preload, getCompounds) {
+  .controller("level1", ["$firebaseArray", "$scope", "$controller", "gameFactory", "preload", "getCompounds", "getFormulaArray",
+    function($firebaseArray, $scope, $controller, gameFactory, preload, getCompounds, getFormulaArray) {
       //console.log("found Level 1");
       var game = gameFactory;
-      //console.log("game", game);
-      game.state.add('level1', {preload:preload, create:create});
-      game.state.start('level1');
+      var cation;
+      var anion;
+      var cationBox;
+      var anionBox;
+      var formula;
+      var formulaArray = [];
 
-      var compoundsFromFactory = getCompounds.goGetCompounds();
-      //console.log("game data", compoundsFromFactory);
+      //console.log("game", game);
+
+      game.state.add('level1', {preload:preload, create:create});
+      
+      // getFormulaArray.getArray();
+      // console.log("game.formulaArray", game.formulaArray);
+
+      // console.log (compoundsFromFactory);
+     getCompounds.goGetCompounds()
+        .then(function (data) {
+          angular.forEach (data, function (value) {
+            console.log("value", value);
+            formulaArray.push(value);
+          });
+          console.log("formulaArray", formulaArray);
+          game.state.start('level1');
+        });
+
 
 
      function create() {
@@ -41,24 +60,26 @@ define([
 
 
       //Get data from factory (firebase)
-      game.formulaArray = [];
-        compoundsFromFactory.then (function(data) {
-          angular.forEach (data, function (value) {
-            //console.log("value", value);
-            game.formulaArray.push(value);
-          });
+      // game.formulaArray = [];
+      //   compoundsFromFactory.then (function(data) {
+      //     angular.forEach (data, function (value) {
+      //       //console.log("value", value);
+      //       game.formulaArray.push(value);
+      //     });
         //console.log("array", game.formulaArray[0].anion);
 
-        var anion = game.formulaArray[0].anion;
-        var cation = game.formulaArray[0].cation;
-        var formula = game.formulaArray[0].formula;
+        anion = formulaArray[0].anion;
+        cation = formulaArray[0].cation;
+        formula = formulaArray[0].formula;
         //console.log("anion", anion);
+        
+        console.log("anion", anion);
 
         //static box for the formula
         this.formula = this.game.add.sprite(this.game.world.centerX, this.game.world.height, formula);
         this.formula.anchor.setTo(2.5, 4);
 
-      //static empty box anchored to anion
+        //static empty box anchored to anion
         this.anionBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'anionBox');
         this.anionBox.anchor.setTo(-1, 4);
 
@@ -90,7 +111,6 @@ define([
                                                         endSprite, 
                                                         function() {
                                                           currentSprite.input.draggable = false; 
-                                                          //console.log("drug");
                                                         } );
           if ( !tophat ) {
             currentSprite.position.copyFrom(currentSprite.originalPosition);
@@ -104,9 +124,28 @@ define([
          this.cation.events.onDragStop.add(function(currentSprite){
           stopDrag(currentSprite, this.cationBox);
         }, this);
+          //console.log(this.cationBox.position)
+         console.log("cation",cation);
+          if (this.cation.input.draggable === true) {
+            console.log("good job");
+          }
 
-      }.bind(this)
-      );
+          function update() {
+            
+          }
+
+      //}.bind(this)
+      //);
+         
+       
+     
+      
+
+
+
+
+
+    
 
      }
   }]); 

@@ -31,16 +31,7 @@ define([
         game.load.spritesheet("anionBox", "images/emptyBox.jpg", 112, 59);
         game.load.spritesheet("cationBox", "images/emptyBox.jpg", 112, 59);
         game.load.spritesheet("water", "images/water.jpg", 112, 59);
-        
 
-        // game.formulaArray = [];
-        // compoundsFromFactory.then (function(data) {
-        //   angular.forEach (data, function (value) {
-        //     //console.log("value", value);
-        //     game.formulaArray.push(value);
-        //     //console.log(game.formulaArray);
-        //   });
-        // });
       };
     }]);
 });
