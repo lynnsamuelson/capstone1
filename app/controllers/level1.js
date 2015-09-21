@@ -55,9 +55,11 @@ define([
       this.water = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'water');
       this.water.anchor.setTo(2.3, 5);
 
-      anion = formulaArray[0].anion;
-      cation = formulaArray[0].cation;
-      formula = formulaArray[0].formula;
+      equation = formulaArray.splice(Math.floor(Math.random()*formulaArray.length),1);;
+
+      anion = equation[0].anion;
+      cation = equation[0].cation;
+      formula = equation[0].formula;
       //console.log("anion", anion);
         
         //static box for the formula
@@ -89,6 +91,12 @@ define([
         this.cation.inputEnabled = true;
         this.cation.input.enableDrag();
         this.cation.originalPosition = this.cationBox.position.clone();
+
+        //add other sprites to the page
+        this.Cl = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'Cl');
+        this.Cl.anchor.setTo(0.8, 0);
+
+
 
         var _this = this;
         function stopDrag(currentSprite, endSprite){
