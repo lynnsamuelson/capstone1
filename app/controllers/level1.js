@@ -26,10 +26,11 @@ define([
       var variables;
       var formulaArray = [];
       var display = [];
+      var answerCounter = 0;
 
       //console.log("game", game);
 
-      game.state.add('level1', {preload:preload, create:create});
+      game.state.add('level1', {preload:preload, create:create, update:update});
       
       // getFormulaArray.getArray();
       // console.log("game.formulaArray", game.formulaArray);
@@ -179,6 +180,7 @@ define([
           //console.log("we have a cation", display1.key);
 
           // When dragging stops call stopDrag() which determines what to do with sprite
+          display1.key = this.cation;
           display1.events.onDragStop.add(function(currentSprite){
             //console.log("stopDrag position before stop drag", spriteOrigPos);
             stopDrag(currentSprite, this.cationBox);
@@ -189,6 +191,7 @@ define([
 
           //console.log("we have an anion", display1.key);
 
+          display1.key = this.anion;
           display1.events.onDragStop.add(function(currentSprite){
             //console.log("stopDrag position before stop drag", spriteOrigPos);
             //console.log("onDragStop entities", currentSprite, this.anionBox);
@@ -228,15 +231,8 @@ define([
         }
       }.bind(this);
 
-      var stopDrag = function(currentSprite, endSprite){
-        // console.log("stopDrag sprite position after stopDrag", currentSprite.x, currentSprite.y);
-        // console.log("cation box position", this.cationBox.position);
-        // console.log("anion box position", this.anionBox.position);
-        // console.log("endSprite", endSprite);
-        // console.log("currentSprite", currentSprite);
-        // console.log("anionBox", this.anionBox);
-        // console.log("cationBox", this.cationBox);
 
+      var stopDrag = function(currentSprite, endSprite){
 
         var disableDragging = function() {
           currentSprite.input.draggable = false; 
@@ -246,7 +242,8 @@ define([
 
         // If sprite not in correct pos, bounce back to where it started
         if ( theyOverlap ) {
-          currentSprite.input.draggable = false; 
+          currentSprite.input.draggable = false;
+          answerCounter++; 
           //console.log("they overlap");
         } else {
           bounceBack(currentSprite, spriteOrigPos);
@@ -257,22 +254,21 @@ define([
       //var _this = this;
     }//closes the create function
 
-    // function update() {
-    //   if (this.cation.input.draggable === false && this.anion.input.draggable === false) {
-    //   if(formulaArray.length > 1) {
-    //     goodJob = game.add.text(330, 250, "Good Job");
-    //     button = game.add.button(200, 200, 'button', nextProblem, this);
-    //     button.scale.setTo(0.5);
-    //     function nextProblem () {
-    //       formulaArray.shift();
-    //       console.log("shorter formulaArray", formulaArray.length);
-    //       game.state.start('level1');
-    //     }
-    //     } else {
-    //         finished = game.add.text(200, 230, "Finished Level 1");
-    //     }
-    //   }
-    // }
+    function update() {
+      if (answerCounter > 1) {
+      if(formulaArray.length > 1) {
+        goodJob = game.add.text(330, 250, "Good Job");
+        button = game.add.button(200, 200, 'button', nextProblem, this);
+        button.scale.setTo(0.5);
+        function nextProblem () {
+          formulaArray.shift();
+          game.state.start('level1');
+        }
+        } else {
+            finished = game.add.text(200, 230, "Finished Level 1");
+        }
+      }
+    }
 
   } //closes line 17
   ]);//closes line 16 
