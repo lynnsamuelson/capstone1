@@ -14,6 +14,8 @@ define([
         game.load.image("background", "images/testTubes.jpg");
         game.load.image("button", "images/button.jpg", 50, 50);
         game.load.spritesheet("Br", "images/Br.png", 150, 59);
+        game.load.image("2Cl", "images/2Cl.jpg  ", 150, 61);
+        game.load.image("2Br", "images/2Br.jpg  ", 150, 61);
         game.load.image("Cl", "images/Cl.png  ", 150, 61);
         game.load.image("Li", "images/Li.jpg  ", 150, 61);
         game.load.image("LiBr", "images/LiBr.png  ", 149, 60);
