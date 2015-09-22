@@ -72,12 +72,14 @@ define([
       this.anionBox.position.x = 550;
       this.anionBox.position.y = 65;
       this.game.physics.arcade.enable(this.anionBox);
+      //console.log("anion box position", this.anionBox.position);
 
       //static empty box anchored to cation
       this.cationBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'cationBox');
       this.cationBox.position.x = 340;
       this.cationBox.position.y = 80;
       this.game.physics.arcade.enable(this.cationBox);
+     //console.log("cation box position", this.cationBox.position);
 
       display.push(cation);
       display.push(anion);
@@ -94,91 +96,183 @@ define([
         }
       }
 
+      // Generate Sprite 1
       var randomNum = Math.floor((Math.random() * display.length));
-
       // Just pull the string out into display1 var
-      display1 = display.splice(randomNum, 1);
-      display1 = display1[0];
-      console.log("display1", display1);
-
+      firstSprite = display.splice(randomNum, 1);
+      firstSprite = firstSprite[0];
       // Create the sprite and set its location
-      this.display1 = this.game.add.sprite(50, 200, display1);
+      this.firstSprite = this.game.add.sprite(50, 150, firstSprite);
 
-      // Enable physics on the sprite
-      this.game.physics.arcade.enable(this.display1);
+      //Generate Sprite 2
+      randomNum = Math.floor((Math.random() * display.length));
+      secondSprite = display.splice(randomNum, 1);
+      secondSprite = secondSprite[0];
+      // Create the sprite and set its location
+      this.secondSprite = this.game.add.sprite(250, 150, secondSprite);
 
-      // Let the user drag the sprite
-      this.display1.inputEnabled = true;
-      this.display1.input.enableDrag();
+      //Generate Sprite 3
+      randomNum = Math.floor((Math.random() * display.length));
+      thirdSprite = display.splice(randomNum, 1);
+      thirdSprite = thirdSprite[0];
+      // Create the sprite and set its location
+      this.thirdSprite = this.game.add.sprite(450, 150, thirdSprite);
 
-      var _this = this;
+      //Generate Sprite 4
+      randomNum = Math.floor((Math.random() * display.length));
+      forthSprite = display.splice(randomNum, 1);
+      forthSprite = forthSprite[0];
+      // Create the sprite and set its location
+      this.forthSprite = this.game.add.sprite(650, 150, forthSprite);
 
-      // Module level variable to hold sprite position once dragged
-      this.spriteOrigPos = {x:0, y:0};
+      //Generate Sprite 5
+      randomNum = Math.floor((Math.random() * display.length));
+      fifthSprite = display.splice(randomNum, 1);
+      fifthSprite = fifthSprite[0];
+      // Create the sprite and set its location
+      this.fifthSprite = this.game.add.sprite(50, 250, fifthSprite);
 
-      this.display1.events.onDragStart.add(function(currentSprite){
-        this.spriteOrigPos.x = currentSprite.x;
-        this.spriteOrigPos.y = currentSprite.y;
-      }, this);
+      //Generate Sprite 6
+      randomNum = Math.floor((Math.random() * display.length));
+      sixthSprite = display.splice(randomNum, 1);
+      sixthSprite = sixthSprite[0];
+      // Create the sprite and set its location
+      this.sixthSprite = this.game.add.sprite(250, 250, sixthSprite);
+
+      //Generate Sprite 7
+      randomNum = Math.floor((Math.random() * display.length));
+      seventhSprite = display.splice(randomNum, 1);
+      seventhSprite = seventhSprite[0];
+      // Create the sprite and set its location
+      this.seventhSprite = this.game.add.sprite(450, 250, seventhSprite);
+
+      //Generate Sprite 8
+      randomNum = Math.floor((Math.random() * display.length));
+      eighthSprite = display.splice(randomNum, 1);
+      eighthSprite = eighthSprite[0];
+      // Create the sprite and set its location
+      this.eighthSprite = this.game.add.sprite(650, 250, eighthSprite);
+
+      var sort = function(display1) {
+        //console.log("display1 inside function", display1);
+        //console.log("game.physics.arcade inside function", game.physics.arcade);
+        // Enable physics on the sprite
+        game.physics.arcade.enable(display1);
+        // Let the user drag the sprite
+        display1.inputEnabled = true;
+        display1.input.enableDrag();
+
+
+        // Module level variable to hold sprite position once dragged
+        spriteOrigPos = {x:0, y:0};
+        var _this = this;
+
+        display1.events.onDragStart.add(function(currentSprite){
+          spriteOrigPos.x = currentSprite.x;
+          spriteOrigPos.y = currentSprite.y;
+        }, this);
+
+
+        // If it is a cation...
+        if (display1.key === cation) {
+
+          //console.log("we have a cation", display1.key);
+
+          // When dragging stops call stopDrag() which determines what to do with sprite
+          display1.events.onDragStop.add(function(currentSprite){
+            //console.log("stopDrag position before stop drag", spriteOrigPos);
+            stopDrag(currentSprite, this.cationBox);
+          }, this);
+
+
+        } else if (display1.key === anion) { 
+
+          //console.log("we have an anion", display1.key);
+
+          display1.events.onDragStop.add(function(currentSprite){
+            //console.log("stopDrag position before stop drag", spriteOrigPos);
+            //console.log("onDragStop entities", currentSprite, this.anionBox);
+            stopDrag(currentSprite, this.anionBox);
+          }, this);
+
+        } else {
+          //console.log("we have something strange", display1);
+
+          display1.events.onDragStart.add(function(sprite) {
+            //console.log("cation property", cation);
+            //console.log("this.spriteOrigPos", this.spriteOrigPos);
+          }, this);
+
+          display1.events.onDragStop.add(function(currentSprite){
+          bounceBack(currentSprite, this.spriteOrigPos);
+          });
+        }
+      }.bind(this);
+
+      sort(this.firstSprite);
+      sort(this.secondSprite);
+      sort(this.thirdSprite);
+      sort(this.forthSprite);
+      sort(this.fifthSprite);
+      sort(this.sixthSprite);
+      sort(this.seventhSprite);
+      sort(this.eighthSprite);
 
       var bounceBack = function(currentSprite){
-        var xNoMatch = (currentSprite.position.x !== this.spriteOrigPos.x);
-        var yNoMatch = (currentSprite.position.y !== this.spriteOrigPos.y);
+        var xNoMatch = (currentSprite.position.x !== spriteOrigPos.x);
+        var yNoMatch = (currentSprite.position.y !== spriteOrigPos.y);
 
         if ( xNoMatch || yNoMatch ) {
-          currentSprite.position.x = this.spriteOrigPos.x;
-          currentSprite.position.y = this.spriteOrigPos.y;
+          currentSprite.position.x = spriteOrigPos.x;
+          currentSprite.position.y = spriteOrigPos.y;
         }
       }.bind(this);
 
       var stopDrag = function(currentSprite, endSprite){
+        // console.log("stopDrag sprite position after stopDrag", currentSprite.x, currentSprite.y);
+        // console.log("cation box position", this.cationBox.position);
+        // console.log("anion box position", this.anionBox.position);
+        // console.log("endSprite", endSprite);
+        // console.log("currentSprite", currentSprite);
+        // console.log("anionBox", this.anionBox);
+        // console.log("cationBox", this.cationBox);
+
+
         var disableDragging = function() {
           currentSprite.input.draggable = false; 
         };
 
-        var theyOverlap = _this.game.physics.arcade.overlap(endSprite, currentSprite);
+        var theyOverlap = game.physics.arcade.overlap(currentSprite, endSprite);
 
         // If sprite not in correct pos, bounce back to where it started
         if ( theyOverlap ) {
           currentSprite.input.draggable = false; 
+          //console.log("they overlap");
         } else {
-          bounceBack(currentSprite, this.spriteOrigPos);
+          bounceBack(currentSprite, spriteOrigPos);
+          //console.log("they don't overlap");
         }
       }.bind(this);
 
+      //var _this = this;
+    }//closes the create function
 
-      // If it is a cation...
-      if (display1 === cation) {
-
-        console.log("we have a cation", this.display1);
-
-        // When dragging stops call stopDrag() which determines what to do with sprite
-        this.display1.events.onDragStop.add(function(currentSprite){
-          stopDrag(currentSprite, this.cationBox);
-        }, this);
-
-
-      } else if (display1 === anion) { 
-
-        console.log("we have an anion", this.display1);
-
-        this.display1.events.onDragStop.add(function(currentSprite){
-          console.log("stopDrag positions",currentSprite.position, this.anionBox.position);
-          stopDrag(currentSprite, this.anionBox);
-        }, this);
-
-      } else {
-        console.log("we have something strange", display1);
-
-        this.display1.events.onDragStart.add(function(sprite) {
-          console.log("cation property", cation);
-          console.log("this.spriteOrigPos", this.spriteOrigPos);
-        }, this);
-
-        this.display1.events.onDragStop.add(function(currentSprite){
-        bounceBack(currentSprite, this.spriteOrigPos);
-        }, this);
-      }
+    // function update() {
+    //   if (this.cation.input.draggable === false && this.anion.input.draggable === false) {
+    //   if(formulaArray.length > 1) {
+    //     goodJob = game.add.text(330, 250, "Good Job");
+    //     button = game.add.button(200, 200, 'button', nextProblem, this);
+    //     button.scale.setTo(0.5);
+    //     function nextProblem () {
+    //       formulaArray.shift();
+    //       console.log("shorter formulaArray", formulaArray.length);
+    //       game.state.start('level1');
+    //     }
+    //     } else {
+    //         finished = game.add.text(200, 230, "Finished Level 1");
+    //     }
+    //   }
+    // }
 
   } //closes line 17
   ]);//closes line 16 
