@@ -62,7 +62,6 @@ define([
       anion = equation[0].anion;
       cation = equation[0].cation;
       formula = equation[0].formula;
-      //console.log("anion", anion);
         
       //static box for the formula
       this.formula = this.game.add.sprite(this.game.world.centerX, this.game.world.height, formula);
@@ -70,29 +69,15 @@ define([
 
       //static empty box anchored to anion
       this.anionBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'anionBox');
-      this.anionBox.anchor.setTo(-1, 4);
-
-      //movable anion 
-      // this.anion = this.game.add.sprite(this.game.world.centerX, this.game.world.height, anion);
-      // this.anion.anchor.setTo(-0.7, 2.3);
-      // this.game.physics.arcade.enable(this.anionBox);
-      // this.game.physics.arcade.enable(this.anion);
-      // this.anion.inputEnabled = true;
-      // this.anion.input.enableDrag();
-      // this.anion.originalPosition = this.anionBox.position.clone();
+      this.anionBox.position.x = 550;
+      this.anionBox.position.y = 65;
+      this.game.physics.arcade.enable(this.anionBox);
 
       //static empty box anchored to cation
       this.cationBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'cationBox');
-      this.cationBox.anchor.setTo(0.5, 4);
-
-      // // //movable cation
-      // this.cation = this.game.add.sprite(this.game.world.centerX, this.game.world.height, cation);
-      // this.cation.anchor.setTo(0.4, 2.3);
-      // this.game.physics.arcade.enable(this.cationBox);
-      // this.game.physics.arcade.enable(this.cation);
-      // this.cation.inputEnabled = true;
-      // this.cation.input.enableDrag();
-      // this.cation.originalPosition = this.cationBox.position.clone();
+      this.cationBox.position.x = 340;
+      this.cationBox.position.y = 80;
+      this.game.physics.arcade.enable(this.cationBox);
 
       display.push(cation);
       display.push(anion);
@@ -108,43 +93,83 @@ define([
           }
         }
       }
-       console.log("display post cation", display);
 
       var randomNum = Math.floor((Math.random() * display.length));
-      //console.log("randomNum", randomNum);
 
+      // Just pull the string out into display1 var
       display1 = display.splice(randomNum, 1);
-      //console.log("display1", display1);
-
-      this.display1 = this.game.add.sprite(this.game.world.centerX, this.game.world.height, display1);
-      this.display1.anchor.setTo(2.7, 2.3);
-      this.game.physics.arcade.enable(this.display1);
-      this.game.physics.arcade.enable(this.display1);
-      this.display1.inputEnabled = true;
-      this.display1.input.enableDrag();
-      this.spriteOrigPos = {x:0, y:0};
-
-      var _this = this;
-      console.log("cation", cation, "anion", anion);
-      display1 = display1.pop();
+      display1 = display1[0];
       console.log("display1", display1);
 
+      // Create the sprite and set its location
+      this.display1 = this.game.add.sprite(50, 200, display1);
 
+      // Enable physics on the sprite
+      this.game.physics.arcade.enable(this.display1);
+
+      // Let the user drag the sprite
+      this.display1.inputEnabled = true;
+      this.display1.input.enableDrag();
+
+      var _this = this;
+
+      // Module level variable to hold sprite position once dragged
+      this.spriteOrigPos = {x:0, y:0};
+
+      this.display1.events.onDragStart.add(function(currentSprite){
+        this.spriteOrigPos.x = currentSprite.x;
+        this.spriteOrigPos.y = currentSprite.y;
+      }, this);
+
+      var bounceBack = function(currentSprite){
+        var xNoMatch = (currentSprite.position.x !== this.spriteOrigPos.x);
+        var yNoMatch = (currentSprite.position.y !== this.spriteOrigPos.y);
+
+        if ( xNoMatch || yNoMatch ) {
+          currentSprite.position.x = this.spriteOrigPos.x;
+          currentSprite.position.y = this.spriteOrigPos.y;
+        }
+      }.bind(this);
+
+      var stopDrag = function(currentSprite, endSprite){
+        var disableDragging = function() {
+          currentSprite.input.draggable = false; 
+        };
+
+        var theyOverlap = _this.game.physics.arcade.overlap(endSprite, currentSprite);
+
+        // If sprite not in correct pos, bounce back to where it started
+        if ( theyOverlap ) {
+          currentSprite.input.draggable = false; 
+        } else {
+          bounceBack(currentSprite, this.spriteOrigPos);
+        }
+      }.bind(this);
+
+
+      // If it is a cation...
       if (display1 === cation) {
-        console.log("display1 in cation", display1);
+
+        console.log("we have a cation", this.display1);
+
+        // When dragging stops call stopDrag() which determines what to do with sprite
         this.display1.events.onDragStop.add(function(currentSprite){
-          console.log("display1 stopDrag cation");
-          console.log("this.spriteOrigPos", this.spriteOrigPos);
           stopDrag(currentSprite, this.cationBox);
         }, this);
+
+
       } else if (display1 === anion) { 
-        console.log("display1 in anion", display1);
+
+        console.log("we have an anion", this.display1);
+
         this.display1.events.onDragStop.add(function(currentSprite){
-          console.log("display1 stopDrag anion");
-          console.log("this.spriteOrigPos", this.spriteOrigPos);
+          console.log("stopDrag positions",currentSprite.position, this.anionBox.position);
           stopDrag(currentSprite, this.anionBox);
         }, this);
+
       } else {
+        console.log("we have something strange", display1);
+
         this.display1.events.onDragStart.add(function(sprite) {
           console.log("cation property", cation);
           console.log("this.spriteOrigPos", this.spriteOrigPos);
@@ -155,72 +180,6 @@ define([
         }, this);
       }
 
-
-
-      function bounceBack(currentSprite, oPos){
-        console.log("this.spriteOrigPos from bounceBack", this.spriteOrigPos);
-        if ( currentSprite.position.x !== oPos.x && currentSprite.position.y !== oPos.y ) {
-          currentSprite.position.x = oPos.x;
-          currentSprite.position.y = oPos.y;
-        }
-      }
-
-      function stopDrag(currentSprite, endSprite){
-        console.log("this.spriteOrigPos from stopDrag", this.spriteOrigPos);
-        var inCorrectPosition = _this.game.physics.arcade.overlap(currentSprite, 
-          endSprite, 
-          function() {
-            currentSprite.input.draggable = false; 
-          } );
-          if ( !inCorrectPosition ) {
-            bounceBack(currentSprite, this.spriteOrigPos);
-          }
-        }
-
-
-
-       
-
-      // function stopDrag(currentSprite, endSprite){
-      //   if (inCorrectPosition = _this.game.physics.arcade.overlap(currentSprite, endSprite) {
-      //       currentSprite.input.draggable = false;
-      //   } else (currentSprite.position.x !== endSprite.x && currentSprite.position.y !== endSprite.y ){
-      //      bounceBack(currentSprite, endSprite);
-      //   }
-      // }
-    } //closes create function
-
-        //if ( !inCorrectPosition ) {
-          //currentSprite.position.copyFrom(currentSprite.originalPosition);
-
-      //}
-
-      //  this.anion.events.onDragStop.add(function(currentSprite){
-      //   stopDrag(currentSprite, this.anionBox);
-      // }, this);
-
-      //  this.cation.events.onDragStop.add(function(currentSprite){
-      //   stopDrag(currentSprite, this.cationBox);
-      // }, this);
-       
-   //}
-
-    // function update() {
-    //   if (this.cation.input.draggable === false && this.anion.input.draggable === false) {
-    //     if(formulaArray.length > 1) {
-    //       goodJob = game.add.text(330, 250, "Good Job");
-    //       button = game.add.button(200, 200, 'button', nextProblem, this);
-    //       button.scale.setTo(0.5);
-    //       function nextProblem () {
-    //         formulaArray.shift();
-    //         console.log("shorter formulaArray", formulaArray.length);
-    //         game.state.start('level1');
-    //       }
-    //     } else {
-    //         finished = game.add.text(200, 230, "Finished Level 1");
-    //     }
-    //   }
-    // }
   } //closes line 17
   ]);//closes line 16 
 }); //closes line 6
