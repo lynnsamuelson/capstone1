@@ -57,12 +57,7 @@ define([
 
       game.add.sprite(game.world.x, game.world.y, 'background');
       
-      // if (button) {
-      //   button.destroy();
-      //   button.events.removeAll();
-      //   console.log("button Destoy activated");
-        
-      // }
+
 
       //static arrow box
       this.arrows = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'arrows');
@@ -76,15 +71,28 @@ define([
       anion = equation[0].anion;
       cation = equation[0].cation;
       formula = equation[0].formula;
+      anionCoeffNum = equation[0].anionCoefficient;
+      cationCoeffNum = equation[0].cationCoefficient;
         
+      //Add the coefficient to the DOM
+      cationCounterBox = this.game.add.sprite(300, 80, 'grayBox');
+      cationCoefficient = game.add.text(310, 78, cationCoeffNum);
+      cationCoefficient.scale.setTo(2);
+
+      //Add the coefficient to the DOM
+      anionCounterBox = this.game.add.sprite(550, 78, 'grayBox2');
+      anionCoefficient = game.add.text(560, 78, anionCoeffNum);
+      anionCoefficient.scale.setTo(2);
+      
+
       //static box for the formula
       this.formula = this.game.add.sprite(this.game.world.centerX, this.game.world.height, formula);
       this.formula.anchor.setTo(2.7, 4);
 
       //static empty box anchored to anion
       this.anionBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'anionBox');
-      this.anionBox.position.x = 550;
-      this.anionBox.position.y = 65;
+      this.anionBox.position.x = 600;
+      this.anionBox.position.y = 80;
       this.game.physics.arcade.enable(this.anionBox);
       //console.log("anion box position", this.anionBox.position);
 

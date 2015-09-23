@@ -57,6 +57,23 @@
       "cationCoefficient": 1,
       "solidInWater" : false
     },
+    "potassiumPermanganate" : {
+      "anion" : "MnO4",
+      "cation" : "K",
+      "formula" : "KMnO4",
+      "anionCoefficient": 1,
+      "cationCoefficient": 1,
+      "solidInWater" : false
+    },
+    "potassiumManganate" : {
+      "anion" : "MnO4",
+      "cation" : "K",
+      "formula" : "KMnO4",
+      "anionCoefficient": 1,
+      "cationCoefficient": 2,
+      "solidInWater" : false
+    },
+
     "sodiumSulfate" : {
       "anion" : "SO4",
       "cation" : "Na",
@@ -64,8 +81,71 @@
       "anionCoefficient": 1,
       "cationCoefficient": 2,
       "solidInWater" : false
+    },
+    "potassiumIodide" : {
+      "anion" : "I",
+      "cation" : "K",
+      "formula" : "KI",
+      "anionCoefficient": 1,
+      "cationCoefficient": 1,
+      "solidInWater" : false
+    },
+    "calciumChloride" : {
+      "anion" : "Cl",
+      "cation" : "Ca",
+      "formula" : "CaCl2",
+      "anionCoefficient": 2,
+      "cationCoefficient": 1,
+      "solidInWater" : false
+    },
+    "calciumBromide" : {
+      "anion" : "Br",
+      "cation" : "Ca",
+      "formula" : "CaBr2",
+      "anionCoefficient": 2,
+      "cationCoefficient": 1,
+      "solidInWater" : false
+    },
+    "calciumFluoride" : {
+      "anion" : "Fl",
+      "cation" : "Ca",
+      "formula" : "CaFl2",
+      "anionCoefficient": 2,
+      "cationCoefficient": 1,
+      "solidInWater" : false
+    },
+    "cupricChloride" : {
+      "anion" : "Cl",
+      "cation" : "Cu",
+      "formula" : "CuCl2",
+      "anionCoefficient": 2,
+      "cationCoefficient": 1,
+      "solidInWater" : false
+    },
+    "copperChloride" : {
+      "anion" : "Cl",
+      "cation" : "Cu",
+      "formula" : "CuCl",
+      "anionCoefficient": 1,
+      "cationCoefficient": 1,
+      "solidInWater" : false
+    },
+    "copperBromide" : {
+      "anion" : "Br",
+      "cation" : "Cu",
+      "formula" : "CuBr",
+      "anionCoefficient": 1,
+      "cationCoefficient": 1,
+      "solidInWater" : false
+    },
+    "cupricBromide" : {
+      "anion" : "Br",
+      "cation" : "Cu",
+      "formula" : "CuBr2",
+      "anionCoefficient": 2,
+      "cationCoefficient": 1,
+      "solidInWater" : false
     }
-
   },
   "Ions" : {
     "sodium" : {

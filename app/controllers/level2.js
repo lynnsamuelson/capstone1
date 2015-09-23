@@ -134,7 +134,7 @@ define([
           }
         }
       }
-
+      
       // Displays the 2 answers and the 6 random ions onto the DOM
       // Generate Sprite 1
       var randomNum = Math.floor((Math.random() * display.length));
