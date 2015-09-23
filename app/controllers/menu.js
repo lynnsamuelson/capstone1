@@ -17,6 +17,7 @@ define([
    function($firebaseArray, getCompounds, $scope, gameFactory, preload) {
     
     var game = gameFactory;
+    var canvas;
     console.log("game", game);
     game.state.add('menu', {preload:preload, create:create});
     game.state.start('menu');
@@ -26,6 +27,7 @@ define([
       console.log("create");
       game.physics.startSystem(Phaser.Physics.ARCADE);
 
+      game.add.sprite(900, 300);
       game.add.sprite(game.world.x, game.world.y, 'background');
       button = game.add.button(10, 20, 'beaker', startClick, this);
       button.scale.setTo(1);
