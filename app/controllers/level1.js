@@ -27,7 +27,9 @@ define([
       var formulaArray = [];
       var display = [];
       var answerCounter = 0;
-
+      var fullFormulaArray;
+      var button;
+      var goodJob;
       //console.log("game", game);
 
       game.state.add('level1', {preload:preload, create:create, update:update});
@@ -47,9 +49,19 @@ define([
 
 
     function create() {
+
+
+     
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
       game.add.sprite(game.world.x, game.world.y, 'background');
+      
+      // if (button) {
+      //   button.destroy();
+      //   button.events.removeAll();
+      //   console.log("button Destoy activated");
+        
+      // }
 
       //static arrow box
       this.arrows = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'arrows');
@@ -85,7 +97,7 @@ define([
       display.push(cation);
       display.push(anion);
       
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < 200; i++) {
         if (display.length < 8) {
           theRandomIon = game.rnd.pick(formulaArray);
           if (display.indexOf(theRandomIon.anion) == -1){
@@ -96,7 +108,6 @@ define([
           }
         }
       }
-
       // Generate Sprite 1
       var randomNum = Math.floor((Math.random() * display.length));
       // Just pull the string out into display1 var
@@ -256,14 +267,14 @@ define([
 
     function update() {
       if (answerCounter > 1) {
-      if(formulaArray.length > 1) {
-        goodJob = game.add.text(330, 250, "Good Job");
-        button = game.add.button(200, 200, 'button', nextProblem, this);
-        button.scale.setTo(0.5);
-        function nextProblem () {
-          formulaArray.shift();
-          game.state.start('level1');
-        }
+        if(formulaArray.length > 1) {
+          goodJob = game.add.text(330, 250, "Good Job");
+          button = this.game.add.button(200, 200, 'button', nextProblem);
+          button.scale.setTo(0.5);
+          function nextProblem () {
+             answerCounter = 0;
+            game.state.start('level1');
+          }
         } else {
             finished = game.add.text(200, 230, "Finished Level 1");
         }
