@@ -34,6 +34,7 @@ define([
       var cationCounter = 0;
       var anionCounter = 0;
       var cationCoefficient;
+      var problemCounter = 0;
       //console.log("game", game);
 
       game.state.add('level1', {preload:preload, create:create, update:update});
@@ -53,8 +54,6 @@ define([
 
 
     function create() {
-
-
      
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -90,15 +89,6 @@ define([
       this.water = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'water');
       this.water.anchor.setTo(2.2, 5);
 
-      equation = formulaArray.splice(Math.floor(Math.random()*formulaArray.length),1);
-      anion = equation[0].anion;
-      cation = equation[0].cation;
-      formula = equation[0].formula;
-        
-      //static box for the formula
-      this.formula = this.game.add.sprite(this.game.world.centerX, this.game.world.height, formula);
-      this.formula.anchor.setTo(2.7, 4);
-
       //static empty box anchored to anion
       this.anionBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'anionBox');
       this.anionBox.position.x = 600;
@@ -113,10 +103,27 @@ define([
       this.game.physics.arcade.enable(this.cationBox);
      //console.log("cation box position", this.cationBox.position);
 
+     //choose a random equation from the database(stored in formulatArray)
+      equation = formulaArray.splice(Math.floor(Math.random()*formulaArray.length),1);
+      anion = equation[0].anion;
+      cation = equation[0].cation;
+      formula = equation[0].formula;
+      anionCoeffNum = equation[0].anionCoefficient;
+      cationCoeffNum = equation[0].cationCoefficient;
+
+        
+      //Add the chosen formula to the DOM
+      this.formula = this.game.add.sprite(this.game.world.centerX, this.game.world.height, formula);
+      this.formula.anchor.setTo(2.7, 4);
+
+
+      //Make an array of the 2 correct ions and 6 random ions to be used as choices
       display.push(cation);
       display.push(anion);
-      
-      for (var i = 0; i < 200; i++) {
+
+      /*builds an array from the ions in the database without duplicating any of the ions.
+        Should be ~ half anios and half cations.*/
+      for (var i = 0; i < 2000; i++) {
         if (display.length < 8) {
           theRandomIon = game.rnd.pick(formulaArray);
           if (display.indexOf(theRandomIon.anion) == -1){
@@ -186,9 +193,9 @@ define([
       // Create the sprite and set its location
       this.eighthSprite = this.game.add.sprite(650, 250, eighthSprite);
 
+      /*controlls the response of the drag and drop.  
+      Only the correct answers are allowed to stay in the box*/
       var sort = function(display1) {
-        //console.log("display1 inside function", display1);
-        //console.log("game.physics.arcade inside function", game.physics.arcade);
         // Enable physics on the sprite
         game.physics.arcade.enable(display1);
         // Let the user drag the sprite
@@ -206,10 +213,8 @@ define([
         }, this);
 
 
-        // If it is a cation...
+        // If it is the correct cation.
         if (display1.key === cation) {
-
-          //console.log("we have a cation", display1.key);
 
           // When dragging stops call stopDrag() which determines what to do with sprite
           display1.key = this.cation;
@@ -219,23 +224,17 @@ define([
           }, this);
 
 
+        // If it is the correct anion.
         } else if (display1.key === anion) { 
-
-          //console.log("we have an anion", display1.key);
 
           display1.key = this.anion;
           display1.events.onDragStop.add(function(currentSprite){
-            //console.log("stopDrag position before stop drag", spriteOrigPos);
-            //console.log("onDragStop entities", currentSprite, this.anionBox);
             stopDrag(currentSprite, this.anionBox);
           }, this);
-
+        //if it is an incorrect ion
         } else {
-          //console.log("we have something strange", display1);
 
           display1.events.onDragStart.add(function(sprite) {
-            //console.log("cation property", cation);
-            //console.log("this.spriteOrigPos", this.spriteOrigPos);
           }, this);
 
           display1.events.onDragStop.add(function(currentSprite){
@@ -272,18 +271,18 @@ define([
 
         var theyOverlap = game.physics.arcade.overlap(currentSprite, endSprite);
 
-        // If sprite not in correct pos, bounce back to where it started
+        // If sprite in not in correct pos, bounce back to where it started
         if ( theyOverlap ) {
           currentSprite.input.draggable = false;
           answerCounter++; 
-          //console.log("they overlap");
         } else {
           bounceBack(currentSprite, spriteOrigPos);
-          //console.log("they don't overlap");
         }
       }.bind(this);
 
-      //var _this = this;
+      problemCounter++;
+      console.log("problemCounter", problemCounter);
+
     }//closes the create function
 
     function update() {
@@ -293,11 +292,16 @@ define([
         answerCounter = 0;
         game.state.start('level1');
       }
-      if (answerCounter > 1) {
-        if(formulaArray.length > 1) {
+      //answerCounter runs when both ions are in the correct place and the coefficients are correct
+      if (answerCounter > 1 && 
+        cationCounterBox.counter === cationCoeffNum && 
+        anionCounterBox.counter === anionCoeffNum) {
+        //problemCounter sets the number of problems to finish
+       if(problemCounter < 10) {
           goodJob = game.add.text(330, 250, "Good Job");
           button = this.game.add.button(200, 200, 'button', nextProblem);
           button.scale.setTo(0.5);
+        //after doing all the set # of problems, the else finishes level 1
         } else {
             finished = game.add.text(200, 230, "Finished Level 1");
         }

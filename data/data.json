@@ -5,48 +5,64 @@
       "anion" : "Cl",
       "cation" : "Na",
       "formula" : "NaCl",
+      "anionCoefficient": 1,
+      "cationCoefficient": 1,
       "solidInWater" : false
     },
     "litiumBromide" : {
       "anion" : "Br",
       "cation" : "Li",
       "formula" : "LiBr",
+      "anionCoefficient": 1,
+      "cationCoefficient": 1,
       "solidInWater" : false
     },
     "magnisiumChloride" : {
       "anion" : "Cl",
       "cation" : "Mg",
       "formula" : "MgCl2",
+      "anionCoefficient": 2,
+      "cationCoefficient": 1,
       "solidInWater" : false
     },
     "magnisiumBromide" : {
       "anion" : "Br",
       "cation" : "Mg",
       "formula" : "MgBr2",
+      "anionCoefficient": 2,
+      "cationCoefficient": 1,
       "solidInWater" : false
     },
     "sodiumBromide" : {
       "anion" : "Br",
       "cation" : "Na",
       "formula" : "NaBr",
+      "anionCoefficient": 1,
+      "cationCoefficient": 1,
       "solidInWater" : false
     },
     "litiumChloride" : {
       "anion" : "Cl",
       "cation" : "Li",
       "formula" : "LiCl",
+      "anionCoefficient": 1,
+      "cationCoefficient": 1,
       "solidInWater" : false
     },
     "magnisiumSulfate" : {
       "anion" : "SO4",
       "cation" : "Mg",
       "formula" : "MgSO4",
+      "anionCoefficient": 1,
+      "cationCoefficient": 1,
       "solidInWater" : false
     },
     "sodiumSulfate" : {
       "anion" : "SO4",
       "cation" : "Na",
       "formula" : "Na2SO4",
+      "anionCoefficient": 1,
+      "cationCoefficient": 2,
       "solidInWater" : false
     }
 
