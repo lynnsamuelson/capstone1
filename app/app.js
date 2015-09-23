@@ -15,9 +15,10 @@ define([
   "controllers/get-ions",
   "factories/getCompounds",
   "controllers/menu",
-  "controllers/level1"
+  "controllers/level1",
+  "controllers/level2",
 ], function(phaser, angular, bootstrap, angularfire, angularRoute, filter, uid, gameFactory,
- preload, auth, username, gameCtrl, home, getIons, getCompound, menu, level1) {
+ preload, auth, username, gameCtrl, home, getIons, getCompound, menu, level1, level2) {
   return angular.module("balanceItApp", [
     "ngRoute",
     "firebase",
@@ -31,7 +32,8 @@ define([
     "balanceItApp.getIons",
     "balanceItApp.getCompounds",
     "balanceItApp.menu",
-    "balanceItApp.level1"
+    "balanceItApp.level1",
+    "balanceItApp.level2"
   ]).
   config(["$routeProvider", function($routeProvider) {
     $routeProvider.otherwise({redirectTo: "/"});

@@ -13,6 +13,7 @@ define([
         this.scale.pageAlignHorizontally = true;
         game.load.image("background", "images/testTubes.jpg");
         game.load.image("button", "images/button.jpg", 50, 50);
+        game.load.image("grayBox", "images/grayBox.jpg", 50, 50);
         game.load.spritesheet("Br", "images/Br.png", 150, 59);
         game.load.image("2Cl", "images/2Cl.jpg  ", 150, 61);
         game.load.image("2Br", "images/2Br.jpg  ", 150, 61);

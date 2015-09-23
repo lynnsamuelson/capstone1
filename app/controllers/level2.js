@@ -4,16 +4,16 @@ define([
   "firebase",
   "bootstrap", 
 ], function(angular, angularRoute, firebase, bootstrap) {
-  angular.module("balanceItApp.level1", ["ngRoute"])
+  angular.module("balanceItApp.level2", ["ngRoute"])
   .config(["$routeProvider", function($routeProvider) {
-    $routeProvider.when("/level1", {
-      templateUrl: "../partials/level1.html",
-      controller: "level1",
-      controllerAs: "level1"
+    $routeProvider.when("/level2", {
+      templateUrl: "../partials/level2.html",
+      controller: "level2",
+      controllerAs: "level2"
     });
   }])
 
-  .controller("level1", ["$firebaseArray", "$scope", "$controller", "gameFactory", "preload", "getCompounds", 
+  .controller("level2", ["$firebaseArray", "$scope", "$controller", "gameFactory", "preload", "getCompounds", 
     function($firebaseArray, $scope, $controller, gameFactory, preload, getCompounds) {
       //console.log("found Level 1");
       var game = gameFactory;
@@ -30,7 +30,10 @@ define([
       var fullFormulaArray;
       var button;
       var goodJob;
-      var problemCounter = 0;
+      var theRandomIon;
+      var cationCounter = 0;
+      var anionCounter = 0;
+      var cationCoefficient;
       //console.log("game", game);
 
       game.state.add('level1', {preload:preload, create:create, update:update});
@@ -57,12 +60,27 @@ define([
 
       game.add.sprite(game.world.x, game.world.y, 'background');
       
-      // if (button) {
-      //   button.destroy();
-      //   button.events.removeAll();
-      //   console.log("button Destoy activated");
-        
-      // }
+      //function that does the counting for the coefficient boxes
+      function tapCounterFunc(tapCounter){
+        tapCounter.counter++;
+      }
+      //Coefficient Box for the cation
+      cationCounterBox = this.game.add.button(300, 80, 'grayBox');
+      cationCounterBox.counter = 0;
+      cationCounterBox.inputEnabled = true;
+      cationCoefficient = game.add.text(310, 78, cationCounterBox.counter);
+      cationCoefficient.scale.setTo(2);
+      cationCounterBox.events.onInputDown.add(tapCounterFunc, this);
+
+      //Coefficient Box for the anion
+      anionCounterBox = this.game.add.button(550, 80, 'grayBox');
+      anionCounterBox.counter = 0;
+      anionCounterBox.inputEnabled = true;
+      anionCoefficient = game.add.text(560, 78, anionCounterBox.counter);
+      anionCoefficient.scale.setTo(2);
+      anionCounterBox.events.onInputDown.add(tapCounterFunc, this);
+
+      
 
       //static arrow box
       this.arrows = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'arrows');
@@ -83,14 +101,14 @@ define([
 
       //static empty box anchored to anion
       this.anionBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'anionBox');
-      this.anionBox.position.x = 550;
-      this.anionBox.position.y = 65;
+      this.anionBox.position.x = 600;
+      this.anionBox.position.y = 80;
       this.game.physics.arcade.enable(this.anionBox);
       //console.log("anion box position", this.anionBox.position);
 
       //static empty box anchored to cation
       this.cationBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'cationBox');
-      this.cationBox.position.x = 340;
+      this.cationBox.position.x = 360;
       this.cationBox.position.y = 80;
       this.game.physics.arcade.enable(this.cationBox);
      //console.log("cation box position", this.cationBox.position);
@@ -98,7 +116,7 @@ define([
       display.push(cation);
       display.push(anion);
       
-      for (var i = 0; i < 2000; i++) {
+      for (var i = 0; i < 200; i++) {
         if (display.length < 8) {
           theRandomIon = game.rnd.pick(formulaArray);
           if (display.indexOf(theRandomIon.anion) == -1){
@@ -110,7 +128,7 @@ define([
         }
       }
 
-     
+      // Displays the 2 answers and the 6 random ions onto the DOM
       // Generate Sprite 1
       var randomNum = Math.floor((Math.random() * display.length));
       // Just pull the string out into display1 var
@@ -265,19 +283,18 @@ define([
         }
       }.bind(this);
 
-      //increases a counter for the number of problems to display on level1
-      problemCounter++;
-      console.log("problemCounter", problemCounter);
       //var _this = this;
     }//closes the create function
 
     function update() {
+      cationCoefficient.text = cationCounterBox.counter;
+      anionCoefficient.text = anionCounterBox.counter;
       function nextProblem () {
         answerCounter = 0;
         game.state.start('level1');
       }
       if (answerCounter > 1) {
-        if(problemCounter < 10) {
+        if(formulaArray.length > 1) {
           goodJob = game.add.text(330, 250, "Good Job");
           button = this.game.add.button(200, 200, 'button', nextProblem);
           button.scale.setTo(0.5);
