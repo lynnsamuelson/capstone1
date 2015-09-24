@@ -287,7 +287,7 @@ define([
       if (answerCounter > 1) {
         if(problemCounter < 10) {
           goodJob = game.add.text(330, 250, "Good Job");
-          button = this.game.add.button(200, 200, 'button', nextProblem);
+          button = this.game.add.button(200, 200, 'stirbar', nextProblem);
           button.scale.setTo(0.5);
         } else {
             finished = game.add.text(200, 230, "Finished Level 1");

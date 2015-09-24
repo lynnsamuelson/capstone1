@@ -299,7 +299,7 @@ define([
         //problemCounter sets the number of problems to finish
        if(problemCounter < 10) {
           goodJob = game.add.text(330, 250, "Good Job");
-          button = this.game.add.button(200, 200, 'button', nextProblem);
+          button = this.game.add.button(200, 200, 'stirbar', nextProblem);
           button.scale.setTo(0.5);
         //after doing all the set # of problems, the else finishes level 1
         } else {
