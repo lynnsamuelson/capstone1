@@ -48,7 +48,7 @@ define([
           angular.forEach (data, function (value) {
             formulaArray.push(value);
           });
-          game.state.start('level1');
+          game.state.start('level2');
         });
 
 
