@@ -1,3 +1,32 @@
+body {
+  background-image: url("../images/laboratory1.jpg");
+  z-index: 3;
+  min-width: 100%;
+  min-height: 100%;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
 
+#logo {
+  border-radius: 50%;
+  max-height: 100px;
+  max-width: 100px;
+  float: left; }
+
+.right {
+  border-radius: 50%;
+  max-height: 100px;
+  max-width: 100px;
+  float: right; }
+
+#learn {
+  border-radius: 50%;
+  max-height: 100px;
+  max-width: 100px; }
+
+.navDrop {
+  border-radius: 10%; }
 
 /*# sourceMappingURL=main.css.map */

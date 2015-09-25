@@ -11,7 +11,7 @@ define([
 
       return function () {
         this.scale.pageAlignHorizontally = true;
-        game.load.image("background", "images/testTubes.jpg");
+        game.load.image("background", "images/testTubes.jpg", 1000, 400);
         game.load.image("button", "images/button.jpg", 50, 50);
         game.load.image("grayBox", "images/grayBox.jpg", 50, 50);
         game.load.image("grayBox2", "images/grayBox.jpg", 50, 50);

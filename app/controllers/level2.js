@@ -37,7 +37,7 @@ define([
       var problemCounter = 0;
       //console.log("game", game);
 
-      game.state.add('level1', {preload:preload, create:create, update:update});
+      game.state.add('level2', {preload:preload, create:create, update:update});
       
       // getFormulaArray.getArray();
       // console.log("game.formulaArray", game.formulaArray);
@@ -290,7 +290,7 @@ define([
       anionCoefficient.text = anionCounterBox.counter;
       function nextProblem () {
         answerCounter = 0;
-        game.state.start('level1');
+        game.state.start('level2');
       }
       //answerCounter runs when both ions are in the correct place and the coefficients are correct
       if (answerCounter > 1 && 

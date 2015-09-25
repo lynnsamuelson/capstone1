@@ -55,7 +55,7 @@ define([
      
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-      game.add.sprite(game.world.x, game.world.y, 'background');
+      game.add.tileSprite(0, 0, 900, 350, 'background');
       
 
 

@@ -4,7 +4,7 @@ define([
   angular
   .module("balanceItApp.gameFactory", [])
   .factory("gameFactory", function() {
-    var game = new Phaser.Game(900, 300, Phaser.AUTO, "gameTarget");
+    var game = new Phaser.Game(900, 350, Phaser.AUTO, "gameTarget");
 
     return game;
   });
