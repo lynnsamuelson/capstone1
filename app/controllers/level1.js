@@ -55,13 +55,15 @@ define([
      
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-      game.add.tileSprite(0, 0, 900, 350, 'background');
+      game.add.sprite(game.world.x, game.world.y, 'background');
       
 
 
       //static arrow box
       this.arrows = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'arrows');
       this.arrows.anchor.setTo(2, 5); 
+
+      this.green = this.game.add.sprite(150, 250, 'green');
 
       //static Water box
       this.water = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'water');
@@ -73,26 +75,26 @@ define([
       formula = equation[0].formula;
       anionCoeffNum = equation[0].anionCoefficient;
       cationCoeffNum = equation[0].cationCoefficient;
+      console.log("formula", formula);
         
       //Add the coefficient to the DOM
-      cationCounterBox = this.game.add.sprite(300, 80, 'grayBox');
+      // cationCounterBox = this.game.add.sprite(300, 80, 'grayBox');
       cationCoefficient = game.add.text(310, 78, cationCoeffNum);
       cationCoefficient.scale.setTo(2);
 
       //Add the coefficient to the DOM
-      anionCounterBox = this.game.add.sprite(550, 78, 'grayBox2');
+      // anionCounterBox = this.game.add.sprite(550, 78, 'grayBox2');
       anionCoefficient = game.add.text(560, 78, anionCoeffNum);
       anionCoefficient.scale.setTo(2);
       
 
       //static box for the formula
-      this.formula = this.game.add.sprite(this.game.world.centerX, this.game.world.height, formula);
-      this.formula.anchor.setTo(2.7, 4);
+      this.formula = this.game.add.sprite(5, 20, formula);
 
       //static empty box anchored to anion
       this.anionBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'anionBox');
       this.anionBox.position.x = 600;
-      this.anionBox.position.y = 80;
+      this.anionBox.position.y = 30;
       this.game.physics.arcade.enable(this.anionBox);
       //console.log("anion box position", this.anionBox.position);
 

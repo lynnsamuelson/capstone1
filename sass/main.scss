@@ -1,5 +1,6 @@
 body {
-  background-image: url("../images/laboratory1.jpg");
+  // background-image: url("../images/laboratory1.jpg");
+  background-color: #F2D5C3;
   z-index: 3;
   min-width: 100%;
   min-height: 100%;
@@ -35,3 +36,13 @@ body {
   border-radius: 10%;
 }
 
+.design {
+  // -webkit-text-fill-color: transparent;
+  // -webkit-background-clip: text;
+  background: blue;
+  color: red;
+  float: left;
+  z-index: 5
+}
+
+  
