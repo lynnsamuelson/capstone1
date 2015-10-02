@@ -35,7 +35,8 @@ define([
       var anionCounter = 0;
       var cationCoefficient;
       var problemCounter = 0;
-      //console.log("game", game);
+      console.log("game", game);
+
 
       game.state.add('level2', {preload:preload, create:create, update:update});
       
@@ -67,45 +68,45 @@ define([
 
       //static arrow box
       this.arrows = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'arrows');
-      this.arrows.position.x = 400;
+      this.arrows.position.x = 475;
       this.arrows.position.y = 120;
 
       //static Water box
       this.water = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'water');
-      this.water.position.x = 400;
-      this.water.position.y = 70; 
+      this.water.position.x = 485;
+      this.water.position.y = 90; 
 
       
 
       //static empty box anchored to anion
       this.anionBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'anionBox');
       this.anionBox.position.x = 735;
-      this.anionBox.position.y = 30;
+      this.anionBox.position.y = 100;
       this.game.physics.arcade.enable(this.anionBox);
       //console.log("anion box position", this.anionBox.position);
 
       //Coefficient Box for the anion
-      anionCounterBox = this.game.add.button(770, 30);
+      anionCounterBox = this.game.add.button(775, 120);
       anionCounterBox.counter = 0;
       anionCounterBox.inputEnabled = true;
-      anionCoefficient = game.add.text(770, 30, anionCounterBox.counter);
-      anionCoefficient.scale.setTo(2);
+      anionCoefficient = game.add.text(775, 120, anionCounterBox.counter);
+      // anionCoefficient.scale.setTo(2);
       anionCounterBox.events.onInputDown.add(tapCounterFunc, this);
 
       
       //static empty box anchored to cation
       this.cationBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'cationBox');
       this.cationBox.position.x = 665;
-      this.cationBox.position.y = 100;
+      this.cationBox.position.y = 170;
       this.game.physics.arcade.enable(this.cationBox);
      //console.log("cation box position", this.cationBox.position);
 
       //Coefficient Box for the cation
-      cationCounterBox = this.game.add.button(698, 100);
+      cationCounterBox = this.game.add.button(70, 185);
       cationCounterBox.counter = 0;
       cationCounterBox.inputEnabled = true;
-      cationCoefficient = game.add.text(698, 100, cationCounterBox.counter);
-      cationCoefficient.scale.setTo(2);
+      cationCoefficient = game.add.text(705, 185, cationCounterBox.counter);
+      // cationCoefficient.scale.setTo(2);
       cationCounterBox.events.onInputDown.add(tapCounterFunc, this);
 
      //choose a random equation from the database(stored in formulatArray)
@@ -119,8 +120,8 @@ define([
         
       //Add the chosen formula to the DOM
       this.formula = this.game.add.sprite(this.game.world.centerX, this.game.world.height, formula);
-      this.formula.position.x = 200;
-      this.formula.position.y = 80;
+      this.formula.position.x = 300;
+      this.formula.position.y = 90;
 
       //Make an array of the 2 correct ions and 6 random ions to be used as choices
       display.push(cation);
@@ -153,56 +154,56 @@ define([
       firstSprite = display.splice(randomNum, 1);
       firstSprite = firstSprite[0];
       // Create the sprite and set its location
-      this.firstSprite = this.game.add.sprite(50, 175, firstSprite);
+      this.firstSprite = this.game.add.sprite(250, 200, firstSprite);
 
       //Generate Sprite 2
       randomNum = Math.floor((Math.random() * display.length));
       secondSprite = display.splice(randomNum, 1);
       secondSprite = secondSprite[0];
       // Create the sprite and set its location
-      this.secondSprite = this.game.add.sprite(150, 175, secondSprite);
+      this.secondSprite = this.game.add.sprite(300, 200, secondSprite);
 
       //Generate Sprite 3
       randomNum = Math.floor((Math.random() * display.length));
       thirdSprite = display.splice(randomNum, 1);
       thirdSprite = thirdSprite[0];
       // Create the sprite and set its location
-      this.thirdSprite = this.game.add.sprite(250, 175, thirdSprite);
+      this.thirdSprite = this.game.add.sprite(350, 200, thirdSprite);
 
       //Generate Sprite 4
       randomNum = Math.floor((Math.random() * display.length));
       forthSprite = display.splice(randomNum, 1);
       forthSprite = forthSprite[0];
       // Create the sprite and set its location
-      this.forthSprite = this.game.add.sprite(350, 175, forthSprite);
+      this.forthSprite = this.game.add.sprite(400, 200, forthSprite);
 
       //Generate Sprite 5
       randomNum = Math.floor((Math.random() * display.length));
       fifthSprite = display.splice(randomNum, 1);
       fifthSprite = fifthSprite[0];
       // Create the sprite and set its location
-      this.fifthSprite = this.game.add.sprite(50, 250, fifthSprite);
+      this.fifthSprite = this.game.add.sprite(250, 275, fifthSprite);
 
       //Generate Sprite 6
       randomNum = Math.floor((Math.random() * display.length));
       sixthSprite = display.splice(randomNum, 1);
       sixthSprite = sixthSprite[0];
       // Create the sprite and set its location
-      this.sixthSprite = this.game.add.sprite(150, 250, sixthSprite);
+      this.sixthSprite = this.game.add.sprite(300, 275, sixthSprite);
 
       //Generate Sprite 7
       randomNum = Math.floor((Math.random() * display.length));
       seventhSprite = display.splice(randomNum, 1);
       seventhSprite = seventhSprite[0];
       // Create the sprite and set its location
-      this.seventhSprite = this.game.add.sprite(250, 250, seventhSprite);
+      this.seventhSprite = this.game.add.sprite(350, 275, seventhSprite);
 
       //Generate Sprite 8
       randomNum = Math.floor((Math.random() * display.length));
       eighthSprite = display.splice(randomNum, 1);
       eighthSprite = eighthSprite[0];
       // Create the sprite and set its location
-      this.eighthSprite = this.game.add.sprite(350, 250, eighthSprite);
+      this.eighthSprite = this.game.add.sprite(400, 275, eighthSprite);
 
       /*controlls the response of the drag and drop.  
       Only the correct answers are allowed to stay in the box*/
@@ -309,8 +310,8 @@ define([
         anionCounterBox.counter === anionCoeffNum) {
         //problemCounter sets the number of problems to finish
        if(problemCounter < 10) {
-          goodJob = game.add.text(470, 175, "Good Job");
-          button = this.game.add.button(480, 215, 'stirbar', nextProblem);
+          goodJob = game.add.text(500, 245, "Good Job");
+          button = this.game.add.button(500, 275, 'stirbar', nextProblem);
           button.scale.setTo(2);
         //after doing all the set # of problems, the else finishes level 1
         } else {
