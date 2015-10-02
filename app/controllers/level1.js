@@ -51,9 +51,12 @@ define([
 
     function create() {
 
-
-     
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
+      // Phaser.Canvas {
+      //   Phaser.Canvas.create
+
+      // }
 
       game.add.sprite(game.world.x, game.world.y, 'background');
       
@@ -61,13 +64,14 @@ define([
 
       //static arrow box
       this.arrows = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'arrows');
-      this.arrows.anchor.setTo(2, 5); 
-
-      this.green = this.game.add.sprite(150, 250, 'green');
+      this.arrows.position.x = 400;
+      this.arrows.position.y = 120;
 
       //static Water box
       this.water = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'water');
-      this.water.anchor.setTo(2.2, 5);
+      this.water.position.x = 400;
+      this.water.position.y = 70; 
+
 
       equation = formulaArray.splice(Math.floor(Math.random()*formulaArray.length),1);
       anion = equation[0].anion;
@@ -77,32 +81,23 @@ define([
       cationCoeffNum = equation[0].cationCoefficient;
       console.log("formula", formula);
         
-      //Add the coefficient to the DOM
-      // cationCounterBox = this.game.add.sprite(300, 80, 'grayBox');
-      cationCoefficient = game.add.text(310, 78, cationCoeffNum);
-      cationCoefficient.scale.setTo(2);
-
-      //Add the coefficient to the DOM
-      // anionCounterBox = this.game.add.sprite(550, 78, 'grayBox2');
-      anionCoefficient = game.add.text(560, 78, anionCoeffNum);
-      anionCoefficient.scale.setTo(2);
-      
-
       //static box for the formula
-      this.formula = this.game.add.sprite(5, 20, formula);
+      this.formula = this.game.add.sprite(200, 80, formula);
 
       //static empty box anchored to anion
       this.anionBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'anionBox');
-      this.anionBox.position.x = 600;
+      this.anionBox.position.x = 735;
       this.anionBox.position.y = 30;
+      anionCoefficient = game.add.text(775, 50, anionCoeffNum);
       this.game.physics.arcade.enable(this.anionBox);
       //console.log("anion box position", this.anionBox.position);
 
       //static empty box anchored to cation
       this.cationBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'cationBox');
-      this.cationBox.position.x = 340;
-      this.cationBox.position.y = 80;
+      this.cationBox.position.x = 665;
+      this.cationBox.position.y = 100;
       this.game.physics.arcade.enable(this.cationBox);
+      cationCoefficient = game.add.text(705, 110, cationCoeffNum);
      //console.log("cation box position", this.cationBox.position);
 
       display.push(cation);
@@ -134,21 +129,21 @@ define([
       secondSprite = display.splice(randomNum, 1);
       secondSprite = secondSprite[0];
       // Create the sprite and set its location
-      this.secondSprite = this.game.add.sprite(250, 150, secondSprite);
+      this.secondSprite = this.game.add.sprite(150, 150, secondSprite);
 
       //Generate Sprite 3
       randomNum = Math.floor((Math.random() * display.length));
       thirdSprite = display.splice(randomNum, 1);
       thirdSprite = thirdSprite[0];
       // Create the sprite and set its location
-      this.thirdSprite = this.game.add.sprite(450, 150, thirdSprite);
+      this.thirdSprite = this.game.add.sprite(250, 150, thirdSprite);
 
       //Generate Sprite 4
       randomNum = Math.floor((Math.random() * display.length));
       forthSprite = display.splice(randomNum, 1);
       forthSprite = forthSprite[0];
       // Create the sprite and set its location
-      this.forthSprite = this.game.add.sprite(650, 150, forthSprite);
+      this.forthSprite = this.game.add.sprite(350, 150, forthSprite);
 
       //Generate Sprite 5
       randomNum = Math.floor((Math.random() * display.length));
@@ -162,21 +157,21 @@ define([
       sixthSprite = display.splice(randomNum, 1);
       sixthSprite = sixthSprite[0];
       // Create the sprite and set its location
-      this.sixthSprite = this.game.add.sprite(250, 250, sixthSprite);
+      this.sixthSprite = this.game.add.sprite(150, 250, sixthSprite);
 
       //Generate Sprite 7
       randomNum = Math.floor((Math.random() * display.length));
       seventhSprite = display.splice(randomNum, 1);
       seventhSprite = seventhSprite[0];
       // Create the sprite and set its location
-      this.seventhSprite = this.game.add.sprite(450, 250, seventhSprite);
+      this.seventhSprite = this.game.add.sprite(250, 250, seventhSprite);
 
       //Generate Sprite 8
       randomNum = Math.floor((Math.random() * display.length));
       eighthSprite = display.splice(randomNum, 1);
       eighthSprite = eighthSprite[0];
       // Create the sprite and set its location
-      this.eighthSprite = this.game.add.sprite(650, 250, eighthSprite);
+      this.eighthSprite = this.game.add.sprite(350, 250, eighthSprite);
 
       var sort = function(display1) {
         //console.log("display1 inside function", display1);

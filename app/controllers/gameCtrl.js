@@ -15,7 +15,7 @@ define([
 
   .controller("gameCtrl", ["$firebaseArray", "getCompounds", "$scope", function($firebaseArray, getCompounds, $scope) {
 
-    var game = new Phaser.Game(900, 300, Phaser.AUTO, "gameTarget", { preload: preload, create: create, update: update });
+    var game = new Phaser.Game(900, 300, Phaser.CANVAS, "gameTarget", { preload: preload, create: create, update: update });
       
     
       //console.log("game", game);

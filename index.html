@@ -13,47 +13,47 @@
     <nav>
       <div>
         <div>
-          <img  id="logo" src="images/chymicIons.jpg">
+          <img  id="logo" src="images/ChymicLogo.png">
         </div>
         <div>
           <h1 class="left design">Chymic Ions</h1>
         </div>
     <!-- Brand and toggle get grouped for better mobile display -->
         <div class="login right">
-            <button href="#/" role="button">Login</button>
+            <a href="#/" role="button"><img id="login" class="login" src="images/login.png"></a>
         </div>
         <div>
-          <a href="#/home" role="button"><img id="learn" class="right" src="images/learn.jpg"></a>
-        </div> 
-        <div>
-          <li class="dropdown right">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="right" src="images/resources.jpg"><span class="caret"></span></a>
+          <div class="dropdown right">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="right" src="images/further.png"></a>
             <ul class="dropdown-menu navDrop">
               <li><a href="http://www.wikihow.com/Balance-Chemical-Equations">WikiHow</a></li>
               <li><a href="https://www.khanacademy.org/science/chemistry/chemical-reactions-stoichiome/balancing-chemical-equations">Khan Academy</a></li>
               <li role="separator" class="divider"></li>
               <li><a href="http://www.ptable.com/">Periodic Table</a></li>
             </ul>
-          </li>
-        </div>
-        <div class="right">
-          <li class="dropdown right">
-            <a class="right" href="#/game"><img class="right" src="images/game.gif"></span></a>
-          </li>
+          </div>
         </div>
         <div>
-          <li class="dropdown right">
-            <a href="#" class="dropdown-toggle right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="right" src="images/practice.jpg"> <span class="caret"></span></a>
+          <civ class="dropdown right">
+            <a href="#" class="right" data-toggle="dropdown" role="button"><img class="right" src="images/practice.png "></a>
             <ul class="dropdown-menu navDrop">
               <li><a href="#/level1">Ion Dissociation</a></li>
               <li><a href="#/level2">Balance Dissociation</a></li>
             </ul>
-          </li>
+          </div>
         </div>
+        <div class="right">
+          <div class="dropdown right">
+            <a class="right" href="#/game"><img class="right" src="images/play.png"></span></a>
+          </div>
+        </div>
+        <div>
+          <a href="#/home" role="button"><img id="learn" class="right" src="images/learn.png"></a>
+        </div> 
       </div>
     </nav>
-
-    <div class="content" ng-view>
+    <br>
+    <div class="content" id="gameTarget" ng-view>
     </div>
     <script data-main="app/requirejs" src="lib/bower_components/requirejs/require.js"></script>
 

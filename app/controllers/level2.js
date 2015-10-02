@@ -73,7 +73,9 @@ define([
       //static Water box
       this.water = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'water');
       this.water.position.x = 400;
-      this.water.position.y = 70;
+      this.water.position.y = 70; 
+
+      
 
       //static empty box anchored to anion
       this.anionBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'anionBox');
@@ -142,6 +144,12 @@ define([
       // Generate Sprite 1
       var randomNum = Math.floor((Math.random() * display.length));
       // Just pull the string out into display1 var
+      // this.blue = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'blue');
+      // this.blue.position.x = 490;
+      // this.blue.position.y = 70;
+      // var style = { font: "30px Arial", fill: "#ffffff" };  
+      // this.blue = this.game.add.text(500, 80, "Hello", style);
+      // this.hello_sprite.addChild(this.blue);
       firstSprite = display.splice(randomNum, 1);
       firstSprite = firstSprite[0];
       // Create the sprite and set its location

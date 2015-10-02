@@ -12,16 +12,15 @@ define([
       return function () {
         this.scale.pageAlignHorizontally = true;
         game.load.image("background", "images/bench3.png", 900, 300);
-        game.load.image("button", "images/button.jpg", 50, 50);
         game.load.spritesheet("Br", "images/Br.png", 75, 75);
         game.load.spritesheet("Ca", "images/Ca.png", 75, 75);
         game.load.spritesheet("CaBr2", "images/CaBr2.png", 150, 150);
         game.load.spritesheet("CaCl2", "images/CaCl2.png", 150, 150);
-        game.load.spritesheet("CaF2", "images/CaF.png", 150, 150);
-        game.load.spritesheet("cationBox", "images/cation.png", 150, 150);
+        game.load.spritesheet("CaF2", "images/CaF2.png", 150, 150);
+        game.load.spritesheet("cationBox", "images/cation2.png", 150, 150);
         game.load.image("Cl", "images/Cl.png", 75, 75);
         game.load.image("Cu", "images/Cu.png ", 75, 75);
-        game.load.image("Cu2", "images/Cu.jpg ", 75, 75);
+        game.load.image("Cu2", "images/Cu2.png ", 75, 75);
         game.load.image("CuBr", "images/CuBr.png ", 150, 150);
         game.load.image("CuBr2", "images/CuBr2.png ", 150, 150);
         game.load.image("CuCl", "images/CuCl.png ", 150, 150);
@@ -40,18 +39,17 @@ define([
         game.load.image("MgCl2", "images/MgCl2.png", 150, 150);
         game.load.image("MgSO4", "images/MgSO4.png", 150, 150);
         game.load.image("MnO4", "images/MnO4-.png", 75, 75);
-        game.load.image("MnO42", "images/MnO42.png", 75, 75);
-        game.load.spritesheet("Na", "images/Na.png", 75, 75);
+        game.load.image("MnO42", "images/MnO4.png", 75, 75);
+        game.load.spritesheet("Na", "images/Na.png", 150, 150);
         game.load.spritesheet("NaBr", "images/NaBr.png", 150, 150);
         game.load.spritesheet("NaCl", "images/NaCl.png", 150, 150);
-        game.load.spritesheet("Na2SO4", "images/NaSO4.png", 150, 150);
+        game.load.spritesheet("Na2SO4", "images/Na2SO4.png", 150, 150);
         game.load.spritesheet("SO4", "images/SO4.png", 75, 75);
-        game.load.spritesheet("arrows", "images/arrows.png", 112, 59);
+        game.load.spritesheet("arrows", "images/arrow.png", 200, 65);
         game.load.spritesheet("stirbar", "images/stirbar.png", 112, 59);
-        game.load.spritesheet("beaker", "images/beaker.png", 150, 150);
-        game.load.spritesheet("anionBox", "images/anion.png", 150, 150);
-        game.load.spritesheet("erlenmeyer", "images/erlenmeyer.jpg", 112, 59);
+        game.load.spritesheet("anionBox", "images/anionTest.png", 150, 150);
         game.load.spritesheet("water", "images/water.png", 112, 59);
+        game.load.spritesheet("blue", "images/blueLow.png", 200, 200);
 
         
 

@@ -1,5 +1,5 @@
 body {
-  background-color: #F2D5C3;
+  background-color: #EEE9BB;
   z-index: 3;
   min-width: 100%;
   min-height: 100%;
@@ -13,7 +13,10 @@ body {
   border-radius: 50%;
   max-height: 100px;
   max-width: 100px;
-  float: left; }
+  float: left;
+  margin: 1.1em;
+  size: 3em;
+  z-index: 200; }
 
 .right {
   border-radius: 50%;
@@ -32,7 +35,45 @@ body {
 .design {
   background: blue;
   color: red;
-  float: left;
-  z-index: 5; }
+  float: left; }
+
+#gameTarget {
+  margin: 10em 0 0 0; }
+
+body {
+  background: #EEE9BB;
+  font-family: "Lato", sans-serif;
+  margin: 3em auto;
+  max-width: 50em; }
+
+.design {
+  display: inline-block;
+  font-size: 60px;
+  margin: 10px;
+  opacity: 0.9;
+  background: white;
+  color: black;
+  position: relative;
+  text-shadow: 1px 1px 0px #EEE9BB, 1px -1px 0px #EEE9BB, -1px -1px 0px #EEE9BB, -1px 1px 0px #EEE9BB; }
+  .design::before, .design::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none; }
+  .design::before {
+    background: linear-gradient(to right, #000000, #FF894F, #4136C6, #FF7D97, #C993FF);
+    content: '';
+    display: block;
+    mix-blend-mode: screen; }
+  .design::after {
+    content: "Chymic Ions";
+    background: #EEE9BB;
+    color: white;
+    mix-blend-mode: multiply; }
+
+.login {
+  max-width: 100px; }
 
 /*# sourceMappingURL=main.css.map */
