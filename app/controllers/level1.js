@@ -173,6 +173,17 @@ define([
       // Create the sprite and set its location
       this.eighthSprite = this.game.add.sprite(400, 275, eighthSprite);
 
+      console.log("formula", formula);
+      console.log("sprite", firstSprite);
+      console.log("sprite", secondSprite);
+      console.log("sprite", thirdSprite);
+      console.log("sprite", forthSprite);
+      console.log("sprite", fifthSprite);
+      console.log("sprite", sixthSprite);
+      console.log("sprite", seventhSprite);
+      console.log("sprite", eighthSprite);
+
+
       var sort = function(display1) {
         //console.log("display1 inside function", display1);
         //console.log("game.physics.arcade inside function", game.physics.arcade);

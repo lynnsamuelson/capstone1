@@ -40,10 +40,6 @@ define([
 
       game.state.add('level2', {preload:preload, create:create, update:update});
       
-      // getFormulaArray.getArray();
-      // console.log("game.formulaArray", game.formulaArray);
-
-      // console.log (compoundsFromFactory);
      getCompounds.goGetCompounds()
         .then(function (data) {
           angular.forEach (data, function (value) {
@@ -144,14 +140,7 @@ define([
       // Displays the 2 answers and the 6 random ions onto the DOM
       // Generate Sprite 1
       var randomNum = Math.floor((Math.random() * display.length));
-      // Just pull the string out into display1 var
-      // this.blue = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'blue');
-      // this.blue.position.x = 490;
-      // this.blue.position.y = 70;
-      // var style = { font: "30px Arial", fill: "#ffffff" };  
-      // this.blue = this.game.add.text(500, 80, "Hello", style);
-      // this.hello_sprite.addChild(this.blue);
-      firstSprite = display.splice(randomNum, 1);
+       firstSprite = display.splice(randomNum, 1);
       firstSprite = firstSprite[0];
       // Create the sprite and set its location
       this.firstSprite = this.game.add.sprite(250, 200, firstSprite);

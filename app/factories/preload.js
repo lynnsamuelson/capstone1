@@ -25,7 +25,7 @@ define([
         game.load.image("CuBr2", "images/CuBr2.png ", 150, 150);
         game.load.image("CuCl", "images/CuCl.png ", 150, 150);
         game.load.image("CuCl2", "images/CuCl2.png ", 150, 150);
-        game.load.image("Fl", "images/Fl.png", 75, 75);
+        game.load.image("Fl", "images/F.png", 75, 75);
         game.load.image("I", "images/I.png", 75, 75);
         game.load.image("K", "images/K.png", 75, 75);
         game.load.image("K2MnO4", "images/K2MnO4.png", 150, 150);
@@ -39,7 +39,7 @@ define([
         game.load.image("MgCl2", "images/MgCl2.png", 150, 150);
         game.load.image("MgSO4", "images/MgSO4.png", 150, 150);
         game.load.image("MnO4", "images/MnO4.png", 75, 75);
-        game.load.image("MnO42", "images/MnO42.png", 75, 75);
+        game.load.image("MnO4-", "images/MnO42.png", 75, 75);
         game.load.spritesheet("Na", "images/Na.png", 150, 150);
         game.load.spritesheet("NaBr", "images/NaBr.png", 150, 150);
         game.load.spritesheet("NaCl", "images/NaCl.png", 150, 150);

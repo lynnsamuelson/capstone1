@@ -34,6 +34,7 @@ define([
     }
     function startClick () {
       window.location = "#/level1";
+      game.state.add('level1', {preload:preload, create:create, update:update});
     }
   }]);
 
