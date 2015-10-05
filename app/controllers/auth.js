@@ -41,52 +41,37 @@ define([
         }, function(error, authData) {
           if (error) {
             console.log("Login Failed!", error);
+            goTo = "username";
           } else {
-            console.log("Authenticated successfully with payload:", authData);
-            currentUID = authData.uid;
-            uid.setUid(currentUID);
-            for (var i = 0; i < usersArr.length; i++) {
-              if(usersArr[i].uid === currentUID) {
                 goTo = "home";
-                break;
-              } else {
-                goTo = "username";
-              }
             }
             if(goTo !== "") {
               window.location = "#/" + goTo + "/";
             }
-          }
+          })
         }.bind(this), {
           remember: "sessionOnly"
-        });
-      };
+        };
+      //};
       
       this.serviceAuth = function(service) {
         authRef.authWithOAuthPopup(service, function(error, authData) {
           if (error) {
             console.log("Login Failed!", error);
+            goTo = "username";
           } else {
-            console.log("Authenticated successfully with payload:", authData);
-            currentUID = authData.uid;
-            uid.setUid(currentUID);
-            for (var i = 0; i < usersArr.length; i++) {
-              if(usersArr[i].uid === currentUID) {
                 goTo = "home";
-                break;
-              } else {
-                goTo = "username";
-              }
+                console.log("goTo", goTo);
             }
             if(goTo !== "") {
               window.location = "#/" + goTo + "/";
             }
-          }
+          })
         }.bind(this), {
           remember: "sessionOnly"
-        });
-      };
+        };
+      }
 
-    }
+    //}
   ]);
 });
