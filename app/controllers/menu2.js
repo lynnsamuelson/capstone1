@@ -4,23 +4,23 @@ define([
   "firebase",
   "bootstrap", 
 ], function(angular, angularRoute, firebase, bootstrap) {
-  angular.module("balanceItApp.menu", ["ngRoute"])
+  angular.module("balanceItApp.menu2", ["ngRoute"])
   .config(["$routeProvider", function($routeProvider) {
-    $routeProvider.when("/game", {
-      templateUrl: "../partials/game.html",
-      controller: "menuCtrl",
-      controllerAs: "menuCtrl"
+    $routeProvider.when("/menu2", {
+      templateUrl: "../partials/menu2.html",
+      controller: "menu2Ctrl",
+      controllerAs: "menu2Ctrl"
     });
   }])
 
-  .controller("menuCtrl", ["$firebaseArray", "getCompounds", "$scope", "gameFactory", "preload",
+  .controller("menu2Ctrl", ["$firebaseArray", "getCompounds", "$scope", "gameFactory", "preload",
    function($firebaseArray, getCompounds, $scope, gameFactory, preload) {
     
     var game = gameFactory;
     var canvas;
     console.log("game", game);
-    game.state.add('menu', {preload:preload, create:create});
-    game.state.start('menu');
+    game.state.add('menu2', {preload:preload, create:create});
+    game.state.start('menu2');
     
 
     function create() {

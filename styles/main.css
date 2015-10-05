@@ -25,7 +25,7 @@ body {
 
 .menu1 {
   float: center;
-  color: white; }
+  color: #3BAD2B; }
 
 .left {
   float: left; }
@@ -81,5 +81,11 @@ body {
 
 .login {
   max-width: 100px; }
+
+#playBtn {
+  size: 0.3em; }
+
+#level2Btn {
+  size: 0.3em; }
 
 /*# sourceMappingURL=main.css.map */

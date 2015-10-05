@@ -8,19 +8,19 @@ define([
   .config(["$routeProvider", function($routeProvider) {
     $routeProvider.when("/home", {
       templateUrl: "../partials/home.html",
-      controller: "homeCtrl",
+      controller: "home",
       controllerAs: "home"
     });
   }])
 
-  .controller("homeCtrl", ["$firebaseArray", "gameFactory", "preload", function($firebaseArray, gameFactory, preload) {
+  .controller("home", ["$firebaseArray", "gameFactory", "preload", function($firebaseArray, gameFactory, preload) {
     var game = gameFactory;
     var canvas;
     game.state.add('home', {preload:preload, create:create});
     game.state.start('home');
 
     function create() {
-      game.stage.backgroundColor = 0xffffff;
+      game.stage.backgroundColor = 0xEEE9BB;
     }
 
 

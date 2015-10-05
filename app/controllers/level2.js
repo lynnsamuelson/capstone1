@@ -21,6 +21,8 @@ define([
       var anion;
       var cationBox;
       var anionBox;
+      var resetBtn;
+      var restBtnText;
       var formula;
       var equation;
       var variables;
@@ -61,6 +63,11 @@ define([
         tapCounter.counter++;
       }
 
+      function resetCounterFunc(tapCounter){
+        anionCounterBox.counter = 0;
+        cationCounterBox.counter = 0;
+      }
+
 
       //static arrow box
       this.arrows = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'arrows');
@@ -98,12 +105,19 @@ define([
      //console.log("cation box position", this.cationBox.position);
 
       //Coefficient Box for the cation
-      cationCounterBox = this.game.add.button(70, 185);
+      cationCounterBox = this.game.add.button(700, 185);
       cationCounterBox.counter = 0;
       cationCounterBox.inputEnabled = true;
       cationCoefficient = game.add.text(705, 185, cationCounterBox.counter);
       // cationCoefficient.scale.setTo(2);
       cationCounterBox.events.onInputDown.add(tapCounterFunc, this);
+
+      //reset button for the ion counters
+      resetBtn = this.game.add.button(775, 225);
+      resetBtn.inputEnabled = true;
+      restBtnText = game.add.text(775, 225, "reset");
+      resetBtn.events.onInputDown.add(resetCounterFunc, this);
+
 
      //choose a random equation from the database(stored in formulatArray)
       equation = formulaArray.splice(Math.floor(Math.random()*formulaArray.length),1);
@@ -112,6 +126,8 @@ define([
       formula = equation[0].formula;
       anionCoeffNum = equation[0].anionCoefficient;
       cationCoeffNum = equation[0].cationCoefficient;
+
+
 
         
       //Add the chosen formula to the DOM

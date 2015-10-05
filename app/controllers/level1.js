@@ -294,7 +294,7 @@ define([
       }
       function nextLevel () {
         answerCounter = 0;
-        window.location = "#/level2";
+        window.location = "#/menu2";
       }
       if (answerCounter > 1) {
         if(problemCounter < 2) {
