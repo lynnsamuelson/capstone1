@@ -125,11 +125,28 @@ body {
 }
 
 #playBtn {
-  size: 0.3em;
+  max-height: 100px;
+  max-width: 100px;
 }
 
 #level2Btn {
-  size: 0.3em;
+  max-height: 100px;
+  max-width: 100px;
 }
+
+.text {
+  line-height: 125%;
+  text-align: justify;
+}
+.center {
+  text-align: center;
+}
+
+.equationArrow {
+  min-height: 25px;
+  min-width: 15px;
+  color: black;
+}
+
 
   

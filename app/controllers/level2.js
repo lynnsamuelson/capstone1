@@ -147,11 +147,14 @@ define([
           if (display.indexOf(theRandomIon.anion) == -1){
             display.push(theRandomIon.anion);
           } 
+        }
+        if (display.length < 8) {
           if (display.indexOf(theRandomIon.cation) == -1) {
             display.push(theRandomIon.cation);
           }
         }
       }
+      console.log("array of options", display);
       
       // Displays the 2 answers and the 6 random ions onto the DOM
       // Generate Sprite 1

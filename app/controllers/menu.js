@@ -28,7 +28,8 @@ define([
       game.physics.startSystem(Phaser.Physics.ARCADE);
 
       game.add.sprite(900, 300);
-      game.add.sprite(game.world.x, game.world.y, 'background');
+      // game.add.sprite(game.world.x, game.world.y, 'background');
+      game.stage.backgroundColor = 0xEEE9BB;
       // button = game.add.button(10, 20, 'beaker', startClick, this);
       // button.scale.setTo(1);
     }

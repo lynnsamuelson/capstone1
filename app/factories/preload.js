@@ -49,7 +49,7 @@ define([
         game.load.spritesheet("stirbar", "images/stirbar.png", 112, 59);
         game.load.spritesheet("anionBox", "images/anion.png", 150, 150);
         game.load.spritesheet("water", "images/water.png", 112, 59);
-        game.load.spritesheet("blue", "images/blueLow.png", 200, 200);
+        game.load.spritesheet("erlenmeyer", "images/erlenmeyer.jpg", 200, 200);
 
         
 

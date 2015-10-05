@@ -109,12 +109,14 @@ define([
           if (display.indexOf(theRandomIon.anion) == -1){
             display.push(theRandomIon.anion);
           } 
+        }
+        if (display.length < 8) {
           if (display.indexOf(theRandomIon.cation) == -1) {
             display.push(theRandomIon.cation);
           }
         }
       }
-
+      console.log("array of options", display);
      
       // Generate Sprite 1
       var randomNum = Math.floor((Math.random() * display.length));
@@ -300,10 +302,11 @@ define([
         if(problemCounter < 2) {
           goodJob = game.add.text(500, 245, "Good Job");
           button = this.game.add.button(500, 275, 'stirbar', nextProblem);
-          button.scale.setTo(2);
         } else {
-            finished = game.add.text(200, 230, "Finished Level 1");
-            button = this.game.add.button(200, 200, 'erlenmeyer', nextLevel);
+            button = this.game.add.button(515, 260, 'erlenmeyer', nextLevel);
+            button.scale.setTo(.25);
+            finished = game.add.text(450, 200, "Finished Level 1");
+            goToLevel2 = game.add.text(450, 230, "Go to Level 2");
         }
       }
     }
