@@ -323,7 +323,7 @@ define([
           button.scale.setTo(2);
         //after doing all the set # of problems, the else finishes level 1
         } else {
-            finished = game.add.text(200, 230, "Finished Level 1");
+            finished = game.add.text(450, 200, "Finished Level 2!");
         }
       }
     }

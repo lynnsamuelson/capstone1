@@ -38,8 +38,8 @@ define([
         game.load.image("MgBr2", "images/MgBr2.png", 150, 150);
         game.load.image("MgCl2", "images/MgCl2.png", 150, 150);
         game.load.image("MgSO4", "images/MgSO4.png", 150, 150);
-        game.load.image("MnO4", "images/MnO4.png", 75, 75);
-        game.load.image("MnO4-", "images/MnO42.png", 75, 75);
+        game.load.image("MnO4", "images/MnO42.png", 75, 75);
+        game.load.image("MnO4-", "images/MnO4.png", 75, 75);
         game.load.spritesheet("Na", "images/Na.png", 150, 150);
         game.load.spritesheet("NaBr", "images/NaBr.png", 150, 150);
         game.load.spritesheet("NaCl", "images/NaCl.png", 150, 150);
