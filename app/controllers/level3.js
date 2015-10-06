@@ -136,7 +136,7 @@ define([
       reactant1coef = this.game.add.button(275, 110);
       reactant1coef.counter = 0;
       reactant1coef.inputEnabled = true;
-      reactant1coef = game.add.text(275, 110, reactant1coef.counter);
+      reactant1coefNum = game.add.text(275, 110, reactant1coef.counter);
       reactant1coef.events.onInputDown.add(tapCounterFunc, this);
 
 
@@ -147,6 +147,14 @@ define([
       reactant2 = this.game.add.text(this.game.world.centerX, this.game.world.height, reactant2);
       reactant2.position.x = 400;
       reactant2.position.y = 110; 
+
+      //coefficient box for reactant1
+      reactant2coef = this.game.add.button(375, 110);
+      reactant2coef.counter = 0;
+      reactant2coef.inputEnabled = true;
+      reactant2coefNum = game.add.text(375, 110, reactant2coef.counter);
+      reactant2coef.events.onInputDown.add(tapCounterFunc, this);
+
 
       product1 = this.game.add.text(this.game.world.centerX, this.game.world.height, product1);
       product1.position.x = 600;
@@ -164,9 +172,9 @@ define([
 
    }//closes the create function
 
-   console.log("reactant1 count", reactant1coef.counter);
     function update() {
-       reactant1coef.text = reactant1coef.counter;
+       reactant1coefNum.text = reactant1coef.counter;
+       reactant2coefNum.text = reactant2coef.counter;
 
       
     }//closes the update function
