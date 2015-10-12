@@ -35,6 +35,9 @@ define([
       var goodJob;
       var theRandomIon;
       var reactant1coef = 0;
+      var reactant2coef = 0;
+      var product1coef = 0;
+      var anionCounter = 0;
       var anionCounter = 0;
       var cationCoefficient;
       var problemCounter = 0;
@@ -52,8 +55,6 @@ define([
           game.state.start('level3');
         });
 
-
-
     function create() {
      
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -70,54 +71,11 @@ define([
         cationCounterBox.counter = 0;
       }
 
-
       //static arrow box
       this.arrows = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'arrows');
       this.arrows.position.x = 475;
       this.arrows.position.y = 110;
       this.arrows.scale.setTo(0.4);
-
-      
-
-      
-
-      //static empty box anchored to anion
-      // this.anionBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'anionBox');
-      // this.anionBox.position.x = 735;
-      // this.anionBox.position.y = 100;
-      // this.game.physics.arcade.enable(this.anionBox);
-      //console.log("anion box position", this.anionBox.position);
-
-      //Coefficient Box for the anion
-      // anionCounterBox = this.game.add.button(775, 120);
-      // anionCounterBox.counter = 0;
-      // anionCounterBox.inputEnabled = true;
-      // anionCoefficient = game.add.text(775, 120, anionCounterBox.counter);
-      // // anionCoefficient.scale.setTo(2);
-      // anionCounterBox.events.onInputDown.add(tapCounterFunc, this);
-
-      
-      //static empty box anchored to cation
-      // this.cationBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'cationBox');
-      // this.cationBox.position.x = 665;
-      // this.cationBox.position.y = 170;
-      // this.game.physics.arcade.enable(this.cationBox);
-     //console.log("cation box position", this.cationBox.position);
-
-      //Coefficient Box for the cation
-      // cationCounterBox = this.game.add.button(700, 185);
-      // cationCounterBox.counter = 0;
-      // cationCounterBox.inputEnabled = true;
-      // cationCoefficient = game.add.text(705, 185, cationCounterBox.counter);
-      // // cationCoefficient.scale.setTo(2);
-      // cationCounterBox.events.onInputDown.add(tapCounterFunc, this);
-
-      //reset button for the ion counters
-      // resetBtn = this.game.add.button(775, 225);
-      // resetBtn.inputEnabled = true;
-      // restBtnText = game.add.text(775, 225, "reset");
-      // resetBtn.events.onInputDown.add(resetCounterFunc, this);
-
 
      //choose a random equation from the database(stored in formulatArray)
       equation = equationArray.splice(Math.floor(Math.random()*equationArray.length),1);
@@ -125,7 +83,11 @@ define([
       reactant2 = equation[0].reactant2;
       product1 = equation[0].product1;
       product2 = equation[0].product2;
-        
+      rct1Coef = equation[0].reactant1Coef;
+      rct2Coef = equation[0].reactant2Coef;
+      prdt1Coef = equation[0].product1Coef;
+      prd2Coef = equation[0].product2Coef;
+
       //Add the first reactant to the DOM
       reactant1 = this.game.add.text(this.game.world.centerX, this.game.world.height, reactant1);
       reactant1.position.x = 300;
@@ -155,10 +117,17 @@ define([
       reactant2coefNum = game.add.text(375, 110, reactant2coef.counter);
       reactant2coef.events.onInputDown.add(tapCounterFunc, this);
 
-
+      //coefficient box for procuct1
       product1 = this.game.add.text(this.game.world.centerX, this.game.world.height, product1);
       product1.position.x = 600;
       product1.position.y = 110;
+
+      //coefficient box for product1
+      product1coef = this.game.add.button(575, 110);
+      product1coef.counter = 0;
+      product1coef.inputEnabled = true;
+      product1coefNum = game.add.text(575, 110, product1coef.counter);
+      product1coef.events.onInputDown.add(tapCounterFunc, this);
 
       if (product2 !== undefined) {
         plus = this.game.add.text(this.game.world.centerX, this.game.world.height, '+');
@@ -168,15 +137,59 @@ define([
         product2 = this.game.add.text(this.game.world.centerX, this.game.world.height, product2);
         product2.position.x = 725;
         product2.position.y = 110;
-      }
+
+        //coefficient box for product1
+        product2coef = this.game.add.button(575, 110);
+        product2coef.counter = 0;
+        product2coef.inputEnabled = true;
+        product2coefNum = game.add.text(575, 110, product2coef.counter);
+        product2coef.events.onInputDown.add(tapCounterFunc, this);
+        console.log("product1coef", product2coef.counter);
+        }
 
    }//closes the create function
 
     function update() {
        reactant1coefNum.text = reactant1coef.counter;
        reactant2coefNum.text = reactant2coef.counter;
+       product1coefNum.text = product1coef.counter;
+       if (product2 !== undefined) { 
+         product2coefNum.text = product2coef.counter;
+       }
 
-      
+       function nextProblem () {
+        answerCounter = 0;
+        game.state.start('level3');
+      }
+      //logic to determine if the coeffients are correct.  Differers for 1 or 2 products
+       if (product2 !== undefined) { 
+         if (rct1Coef === reactant1coef.counter && rct2Coef === reactant2coef.counter
+          && prdt1Coef === product1coef.counter && prdt2Coef === product2coef.counter) {
+          //problemCounter sets the number of problems to finish
+         if(problemCounter < 10) {
+            goodJob = game.add.text(500, 145, "Good Job");
+            button = this.game.add.button(500, 175, 'stirbar', nextProblem);
+            button.scale.setTo(2);
+          //after doing all the set # of problems, the else finishes level 1
+          } else {
+              finished = game.add.text(450, 145, "Finished Level 3!");
+          }
+        }
+      } else {
+        if (rct1Coef === reactant1coef.counter && rct2Coef === reactant2coef.counter
+          && prdt1Coef === product1coef.counter) {
+          //problemCounter sets the number of problems to finish
+         if(problemCounter < 10) {
+            goodJob = game.add.text(500, 145, "Good Job");
+            button = this.game.add.button(500, 175, 'stirbar', nextProblem);
+            button.scale.setTo(2);
+          //after doing all the set # of problems, the else finishes level 1
+          } else {
+              finished = game.add.text(450, 145, "Finished Level 3!");
+          }
+        }
+      }
+
     }//closes the update function
 
   } //closes line 17

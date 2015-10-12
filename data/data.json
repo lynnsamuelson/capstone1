@@ -1,5 +1,101 @@
 
 {
+  "Equation" : {
+    "1" : {
+      "reactant1" : "H2",
+      "reactant2" : "O2",
+      "product1" : "H2O",
+      "reactant1Coef" : 2,
+      "reactant2Coef" :1,
+      "product1Coef" : 2
+    },
+    "2" : {
+      "reactant1" : "Na",
+      "reactant2" : "O2",
+      "product1" : "Na2O",
+      "reactant1Coef" : 4,
+      "reactant2Coef" : 1,
+      "product1Coef" : 2
+    },
+    "3" : {
+      "reactant1" : "Fe",
+      "reactant2" : "Cl3",
+      "product1" : "FeCl3",
+      "reactant1Coef" : 1,
+      "reactant2Coef" : 3,
+      "product1Coef" : 1
+    },
+    "4" : {
+      "reactant1" : "Fe2O3",
+      "reactant2" : "CO",
+      "product1" : "Fe",
+      "product2" : "CO2",
+      "reactant1Coef" : 1,
+      "reactant2Coef" :3,
+      "product1Coef" : 2,
+      "product1Coef" : 3
+    },
+    "5" : {
+      "reactant1" : "FeS2",
+      "reactant2" : "O2",
+      "product1" : "Fe2O3",
+      "product2" : "SO2",
+      "reactant1Coef" : 2,
+      "reactant2Coef" : 7,
+      "product1Coef" : 2,
+      "product2Coef" : 4
+    },
+    "6" : {
+      "reactant1" : "BaCl2",
+      "reactant2" : "H3PO4",
+      "product1" : "HCl",
+      "product2" : "Ba3(PO4)2",
+      "reactant1Coef" : 3,
+      "reactant2Coef" : 2,
+      "product1Coef" : 6,
+      "product2Coef" : 1
+    },
+    "7" : {
+      "reactant1" : "Pb",
+      "reactant2" : "O2",
+      "product1" : "Pb3O4",
+      "reactant1Coef" : 3,
+      "reactant2Coef" : 2,
+      "product1Coef" : 1
+    },
+    "8" : {
+      "reactant1" : "C6H12N4",
+      "reactant2" : "H2O",
+      "product1" : "H2CO",
+      "product2" : "NH3",
+      "reactant1Coef" : 1,
+      "reactant2Coef" : 6,
+      "product1Coef" : 6,
+      "product2Coef" : 4
+    },
+    "9" : {
+      "reactant1" : "Pb(NO3)2",
+      "reactant2" : "Na3AsO4",
+      "product1" : "Pb3(AsO4)2",
+      "product2" : "Na(NO3)",
+      "reactant1Coef" : 3,
+      "reactant2Coef" : 2,
+      "product1Coef" : 1,
+      "product2Coef" : 6
+    },
+    "10" : {
+      "reactant1" : "FeCl3",
+      "reactant2" : "NH4OH",
+      "product1" : "Fe(OH)3",
+      "product2" : "NH4Cl",
+      "reactant1Coef" : 1,
+      "reactant2Coef" : 3,
+      "product1Coef" : 1,
+      "product2Coef" : 3
+    },
+
+
+  },
   "Compounds" : {
     "sodiumChloride" : {
       "anion" : "Cl",

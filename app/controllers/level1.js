@@ -299,7 +299,7 @@ define([
         window.location = "#/menu2";
       }
       if (answerCounter > 1) {
-        if(problemCounter < 2) {
+        if(problemCounter < 10) {
           goodJob = game.add.text(500, 245, "Good Job");
           button = this.game.add.button(500, 275, 'stirbar', nextProblem);
         } else {
