@@ -93,6 +93,54 @@
       "product1Coef" : 1,
       "product2Coef" : 3
     },
+    "11" : {
+      "reactant1" : "KClO3",
+      "product1" : "KCl",
+      "product2" : "O2",
+      "reactant1Coef" : 2,
+      "product1Coef" : 2,
+      "product2Coef" : 3
+    },
+    "12" : {
+      "reactant1" : "H2SO4",
+      "reactant2" : "NaOH",
+      "product1" : "Na2SO4",
+      "product2" : "H2O",
+      "reactant1Coef" : 1,
+      "reactant2Coef" : 2,
+      "product1Coef" : 1,
+      "product2Coef" : 2
+    },
+    "13" : {
+      "reactant1" : "(NH4)2Cr2O7",
+      "product1" : "N2",
+      "product2" : "H2O",
+      "product3" : "Cr2O3",
+      "reactant1Coef" : 1,
+      "product1Coef" : 1,
+      "product2Coef" : 4,
+      "product3Coef" : 1
+    },
+    "14" : {
+      "reactant1" : "C2H4",
+      "reactant2" : "O2",
+      "product1" : "CO2",
+      "product2" : "H2O",
+      "reactant1Coef" : 1,
+      "reactant2Coef" : 2,
+      "product1Coef" : 2,
+      "product2Coef" : 2
+    },
+    "15" : {
+      "reactant1" : "C3H6",
+      "reactant2" : "O2",
+      "product1" : "CO2",
+      "product2" : "H2O",
+      "reactant1Coef" : 1,
+      "reactant2Coef" : 4,
+      "product1Coef" : 3,
+      "product2Coef" : 2
+    }
 
 
   },

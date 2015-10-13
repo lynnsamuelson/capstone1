@@ -37,6 +37,8 @@ define([
       var reactant1coef = 0;
       var reactant2coef = 0;
       var product1coef = 0;
+      var product2coef = 0;
+      var product3coef = 0;
       var anionCounter = 0;
       var anionCounter = 0;
       var cationCoefficient;
@@ -83,10 +85,12 @@ define([
       reactant2 = equation[0].reactant2;
       product1 = equation[0].product1;
       product2 = equation[0].product2;
+      product3 = equation[0].product3;
       rct1Coef = equation[0].reactant1Coef;
       rct2Coef = equation[0].reactant2Coef;
       prdt1Coef = equation[0].product1Coef;
       prd2Coef = equation[0].product2Coef;
+      prd3Coef = equation[0].product3Coef;
 
       //Add the first reactant to the DOM
       reactant1 = this.game.add.text(this.game.world.centerX, this.game.world.height, reactant1);
@@ -106,16 +110,18 @@ define([
       plus.position.x = 350;
       plus.position.y = 110;
 
-      reactant2 = this.game.add.text(this.game.world.centerX, this.game.world.height, reactant2);
-      reactant2.position.x = 400;
-      reactant2.position.y = 110; 
+      if (reactant2 !== undefined) {
+        reactant2 = this.game.add.text(this.game.world.centerX, this.game.world.height, reactant2);
+        reactant2.position.x = 400;
+        reactant2.position.y = 110; 
 
-      //coefficient box for reactant1
-      reactant2coef = this.game.add.button(375, 110);
-      reactant2coef.counter = 0;
-      reactant2coef.inputEnabled = true;
-      reactant2coefNum = game.add.text(375, 110, reactant2coef.counter);
-      reactant2coef.events.onInputDown.add(tapCounterFunc, this);
+        //coefficient box for reactant1
+        reactant2coef = this.game.add.button(375, 110);
+        reactant2coef.counter = 0;
+        reactant2coef.inputEnabled = true;
+        reactant2coefNum = game.add.text(375, 110, reactant2coef.counter);
+        reactant2coef.events.onInputDown.add(tapCounterFunc, this);
+      }
 
       //coefficient box for procuct1
       product1 = this.game.add.text(this.game.world.centerX, this.game.world.height, product1);
@@ -144,17 +150,39 @@ define([
         product2coef.inputEnabled = true;
         product2coefNum = game.add.text(575, 110, product2coef.counter);
         product2coef.events.onInputDown.add(tapCounterFunc, this);
-        console.log("product1coef", product2coef.counter);
-        }
+        console.log("product2coef", product2coef.counter);
+      }
+      if (product3 !== undefined) {
+        plus = this.game.add.text(this.game.world.centerX, this.game.world.height, '+');
+        plus.position.x = 675;
+        plus.position.y = 110;
+
+        product3 = this.game.add.text(this.game.world.centerX, this.game.world.height, product3);
+        product3.position.x = 725;
+        product3.position.y = 110;
+
+        //coefficient box for product1
+        product3coef = this.game.add.button(575, 110);
+        product3coef.counter = 0;
+        product3coef.inputEnabled = true;
+        product3coefNum = game.add.text(575, 110, product3coef.counter);
+        product3coef.events.onInputDown.add(tapCounterFunc, this);
+        console.log("product3coef", product3coef.counter);
+      }
 
    }//closes the create function
 
     function update() {
        reactant1coefNum.text = reactant1coef.counter;
-       reactant2coefNum.text = reactant2coef.counter;
+       if (reactant2 !== undefined) { 
+         reactant2coefNum.text = reactant2coef.counter;
+       }
        product1coefNum.text = product1coef.counter;
        if (product2 !== undefined) { 
          product2coefNum.text = product2coef.counter;
+       }
+       if (product3 !== undefined) { 
+         product2coefNum.text = product3coef.counter;
        }
 
        function nextProblem () {
