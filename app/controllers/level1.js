@@ -72,7 +72,7 @@ define([
       this.water.position.x = 485;
       this.water.position.y = 90; 
 
-
+      console.log("formulaArray", formulaArray);
       equation = formulaArray.splice(Math.floor(Math.random()*formulaArray.length),1);
       anion = equation[0].anion;
       cation = equation[0].cation;

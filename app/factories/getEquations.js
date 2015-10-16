@@ -16,7 +16,7 @@ define([
       
       goGetEquations: function () {
         return $q(function(resolve, reject) {
-          $http.get("https://balanceit.firebaseio.com/Equations/.json")
+          $http.get("https://balanceit.firebaseio.com/Equation/.json")
           .success(
             function(data) {
               resolve(data);

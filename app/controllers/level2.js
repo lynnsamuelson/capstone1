@@ -51,7 +51,6 @@ define([
         });
 
 
-
     function create() {
      
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -114,6 +113,7 @@ define([
       resetBtn.events.onInputDown.add(resetCounterFunc, this);
 
      //choose a random equation from the database(stored in formulatArray)
+      // console.log("formulaArray", formulaArray);
       equation = formulaArray.splice(Math.floor(Math.random()*formulaArray.length),1);
       anion = equation[0].anion;
       cation = equation[0].cation;

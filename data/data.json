@@ -1,7 +1,7 @@
 
 {
   "Equation" : {
-    "1" : {
+    "0" : {
       "reactant1" : "H2",
       "reactant2" : "O2",
       "product1" : "H2O",
@@ -9,7 +9,7 @@
       "reactant2Coef" :1,
       "product1Coef" : 2
     },
-    "2" : {
+    "1" : {
       "reactant1" : "Na",
       "reactant2" : "O2",
       "product1" : "Na2O",
@@ -17,7 +17,7 @@
       "reactant2Coef" : 1,
       "product1Coef" : 2
     },
-    "3" : {
+    "2" : {
       "reactant1" : "Fe",
       "reactant2" : "Cl3",
       "product1" : "FeCl3",
@@ -25,7 +25,7 @@
       "reactant2Coef" : 3,
       "product1Coef" : 1
     },
-    "4" : {
+    "3" : {
       "reactant1" : "Fe2O3",
       "reactant2" : "CO",
       "product1" : "Fe",
@@ -35,7 +35,7 @@
       "product1Coef" : 2,
       "product1Coef" : 3
     },
-    "5" : {
+    "4" : {
       "reactant1" : "FeS2",
       "reactant2" : "O2",
       "product1" : "Fe2O3",
@@ -45,7 +45,7 @@
       "product1Coef" : 2,
       "product2Coef" : 4
     },
-    "6" : {
+    "5" : {
       "reactant1" : "BaCl2",
       "reactant2" : "H3PO4",
       "product1" : "HCl",
@@ -55,7 +55,7 @@
       "product1Coef" : 6,
       "product2Coef" : 1
     },
-    "7" : {
+    "6" : {
       "reactant1" : "Pb",
       "reactant2" : "O2",
       "product1" : "Pb3O4",
@@ -63,7 +63,7 @@
       "reactant2Coef" : 2,
       "product1Coef" : 1
     },
-    "8" : {
+    "7" : {
       "reactant1" : "C6H12N4",
       "reactant2" : "H2O",
       "product1" : "H2CO",
@@ -73,7 +73,7 @@
       "product1Coef" : 6,
       "product2Coef" : 4
     },
-    "9" : {
+    "8" : {
       "reactant1" : "Pb(NO3)2",
       "reactant2" : "Na3AsO4",
       "product1" : "Pb3(AsO4)2",
@@ -83,7 +83,7 @@
       "product1Coef" : 1,
       "product2Coef" : 6
     },
-    "10" : {
+    "9" : {
       "reactant1" : "FeCl3",
       "reactant2" : "NH4OH",
       "product1" : "Fe(OH)3",
@@ -93,7 +93,7 @@
       "product1Coef" : 1,
       "product2Coef" : 3
     },
-    "11" : {
+    "10" : {
       "reactant1" : "KClO3",
       "product1" : "KCl",
       "product2" : "O2",
@@ -101,7 +101,7 @@
       "product1Coef" : 2,
       "product2Coef" : 3
     },
-    "12" : {
+    "11" : {
       "reactant1" : "H2SO4",
       "reactant2" : "NaOH",
       "product1" : "Na2SO4",
@@ -111,7 +111,7 @@
       "product1Coef" : 1,
       "product2Coef" : 2
     },
-    "13" : {
+    "12" : {
       "reactant1" : "(NH4)2Cr2O7",
       "product1" : "N2",
       "product2" : "H2O",
@@ -121,7 +121,7 @@
       "product2Coef" : 4,
       "product3Coef" : 1
     },
-    "14" : {
+    "13" : {
       "reactant1" : "C2H4",
       "reactant2" : "O2",
       "product1" : "CO2",
@@ -131,7 +131,7 @@
       "product1Coef" : 2,
       "product2Coef" : 2
     },
-    "15" : {
+    "14" : {
       "reactant1" : "C3H6",
       "reactant2" : "O2",
       "product1" : "CO2",
