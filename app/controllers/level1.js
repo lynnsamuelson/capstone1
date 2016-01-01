@@ -72,7 +72,7 @@ define([
       this.water.position.x = 485;
       this.water.position.y = 90; 
 
-
+      console.log("formulaArray", formulaArray);
       equation = formulaArray.splice(Math.floor(Math.random()*formulaArray.length),1);
       anion = equation[0].anion;
       cation = equation[0].cation;
@@ -299,12 +299,12 @@ define([
         window.location = "#/menu2";
       }
       if (answerCounter > 1) {
-        if(problemCounter < 2) {
+        if(problemCounter < 10) {
           goodJob = game.add.text(500, 245, "Good Job");
           button = this.game.add.button(500, 275, 'stirbar', nextProblem);
         } else {
             button = this.game.add.button(515, 260, 'erlenmeyer', nextLevel);
-            button.scale.setTo(0.25);
+            button.scale.setTo(.25);
             finished = game.add.text(450, 200, "Finished Level 1");
             goToLevel2 = game.add.text(450, 230, "Go to Level 2");
         }

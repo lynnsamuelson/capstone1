@@ -48,12 +48,11 @@ define([
             if(goTo !== "") {
               window.location = "#/" + goTo + "/";
             }
-          }.bind(this)); 
-        //{
-        //}.bind(this), {
-          //remember: "sessionOnly"
-        //};
-      };
+          })
+        }.bind(this), {
+          remember: "sessionOnly"
+        };
+      //};
       
       this.serviceAuth = function(service) {
         authRef.authWithOAuthPopup(service, function(error, authData) {
@@ -67,13 +66,12 @@ define([
             if(goTo !== "") {
               window.location = "#/" + goTo + "/";
             }
-          //}
-        }.bind(this));
-        //{
-         // remember: "sessionOnly"
-       // };
-      };
+          })
+        }.bind(this), {
+          remember: "sessionOnly"
+        };
+      }
 
-    }
+    //}
   ]);
 });

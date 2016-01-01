@@ -51,7 +51,6 @@ define([
         });
 
 
-
     function create() {
      
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -68,7 +67,6 @@ define([
         cationCounterBox.counter = 0;
       }
 
-
       //static arrow box
       this.arrows = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'arrows');
       this.arrows.position.x = 475;
@@ -78,8 +76,6 @@ define([
       this.water = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'water');
       this.water.position.x = 485;
       this.water.position.y = 90; 
-
-      
 
       //static empty box anchored to anion
       this.anionBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'anionBox');
@@ -93,9 +89,7 @@ define([
       anionCounterBox.counter = 0;
       anionCounterBox.inputEnabled = true;
       anionCoefficient = game.add.text(775, 120, anionCounterBox.counter);
-      // anionCoefficient.scale.setTo(2);
       anionCounterBox.events.onInputDown.add(tapCounterFunc, this);
-
       
       //static empty box anchored to cation
       this.cationBox = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'cationBox');
@@ -118,8 +112,8 @@ define([
       restBtnText = game.add.text(775, 225, "reset");
       resetBtn.events.onInputDown.add(resetCounterFunc, this);
 
-
      //choose a random equation from the database(stored in formulatArray)
+      // console.log("formulaArray", formulaArray);
       equation = formulaArray.splice(Math.floor(Math.random()*formulaArray.length),1);
       anion = equation[0].anion;
       cation = equation[0].cation;
@@ -127,9 +121,6 @@ define([
       anionCoeffNum = equation[0].anionCoefficient;
       cationCoeffNum = equation[0].cationCoefficient;
 
-
-
-        
       //Add the chosen formula to the DOM
       this.formula = this.game.add.sprite(this.game.world.centerX, this.game.world.height, formula);
       this.formula.position.x = 300;
@@ -159,7 +150,7 @@ define([
       // Displays the 2 answers and the 6 random ions onto the DOM
       // Generate Sprite 1
       var randomNum = Math.floor((Math.random() * display.length));
-       firstSprite = display.splice(randomNum, 1);
+      firstSprite = display.splice(randomNum, 1);
       firstSprite = firstSprite[0];
       // Create the sprite and set its location
       this.firstSprite = this.game.add.sprite(250, 200, firstSprite);
@@ -241,7 +232,7 @@ define([
           display1.events.onDragStop.add(function(currentSprite){
             //console.log("stopDrag position before stop drag", spriteOrigPos);
             stopDrag(currentSprite, this.cationBox);
-          }, this);
+        }, this);
 
 
         // If it is the correct anion.
