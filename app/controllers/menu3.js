@@ -11,7 +11,6 @@ define([
       controller: "menu3Ctrl",
       controllerAs: "menu3Ctrl"
     });
-    console.log("ding");
   }])
   .controller("menu3Ctrl", ["$firebaseArray", "getCompounds", "$scope", "gameFactory", "preload",
    function($firebaseArray, getCompounds, $scope, gameFactory, preload) {
