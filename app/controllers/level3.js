@@ -81,9 +81,17 @@ define([
       }
 
       function resetCounterFunc(tapCounter){
-        anionCounterBox.counter = 0;
-        cationCounterBox.counter = 0;
+        reactant1coef.counter = 0;
+        reactant2coef.counter = 0;
+        product1coef.counter = 0;
+        product2coef.counter = 0;
+        product3coef.counter = 0;
       }
+
+      resetBtn = this.game.add.button(775, 225);
+      resetBtn.inputEnabled = true;
+      restBtnText = game.add.text(775, 225, "reset");
+      resetBtn.events.onInputDown.add(resetCounterFunc, this);
 
       //static arrow box
       this.arrows = this.game.add.sprite(this.game.world.centerX, this.game.world.height, 'arrows');
@@ -288,52 +296,64 @@ define([
           }
         }
       }
+      console.log("reactant1coefNum", reactant1coefNum.text);
+      
+      //console.log("reactant2coefNum", reactant2coefNum);
+      //console.log("reactant3coefNum", reactant3coefNum);
+      console.log("product1coefNum", product1coefNum.text);
+      //console.log("product2coefNum", product2coefNum);
+      //console.log("product3coefNum", product3coefNum);
+      console.log("rct1Coef", rct1Coef);
+      if (rct2Coef !== undefined) {
+        console.log("rct2Coef", rct2Coef);
+      }
+      //if (rct3Coef !== undefined) {
+       // console.log("rct3Coef", rct3Coef);
+      //}
+      console.log("prdt1Coef", prdt1Coef);
+      if (prdt2Coef !== undefined) {
+        console.log("prdt2Coef", prdt2Coef);
+      }
+      //if (prdt3Coef !== undefined) {
+      //  console.log("prdt3Coef", prdt3Coef);
+      //
+
    }//closes the create function
-
-
-
-
-
-      // if (product3 !== undefined) {
-      //   plus = this.game.add.text(this.game.world.centerX, this.game.world.height, '+');
-      //   plus.position.x = 675;
-      //   plus.position.y = 110;
-
-      //   product3 = this.game.add.text(this.game.world.centerX, this.game.world.height, product3);
-      //   product3.position.x = 725;
-      //   product3.position.y = 110;
-
-      //   //coefficient box for product1
-      //   product3coef = this.game.add.button(575, 110);
-      //   product3coef.counter = 0;
-      //   product3coef.inputEnabled = true;
-      //   product3coefNum = game.add.text(575, 110, product3coef.counter);
-      //   product3coef.events.onInputDown.add(tapCounterFunc, this);
-      //   console.log("product3coef", product3coef.counter);
-      // }
-
+    
     function update() {
-       reactant1coefNum.text = reactant1coef.counter;
-       if (reactant2 !== undefined) { 
+
+      reactant1coefNum.text = reactant1coef.counter;
+      if (reactant2 !== undefined) { 
          reactant2coefNum.text = reactant2coef.counter;
-       }
+      }
        product1coefNum.text = product1coef.counter;
 
-         if(product2 !== undefined) {
-           product2coefNum.text = product2coef.counter;
-         }
-       if (product3 !== undefined) { 
-         product3coefNum.text = product3coef.counter;
-       }
+      if(product2 !== undefined) {
+         product2coefNum.text = product2coef.counter;
+      }
+      if (product3 !== undefined) { 
+       product3coefNum.text = product3coef.counter;
+     }
 
        function nextProblem () {
         answerCounter = 0;
         game.state.start('level3');
       }
+
+
       //logic to determine if the coeffients are correct.  Differers for 1 or 2 products
-       if (product2 !== undefined) { 
+
+      if (reactant2 !== undefined) {
+        if(rct1Coef === reactant1coef.counter && rct2Coef === reactant2coef.counter && prdt1Coef === product1coef.counter && (prd2Coef === product2coef.counter || undefined)) {
+          //problemCounter sets the number of problems to finish
+         if(problemCounter < 10) {
+            goodJob = game.add.text(500, 145, "Good Job");
+            button = this.game.add.button(500, 175, 'stirbar', nextProblem);
+            button.scale.setTo(2);
+          //after doing all the set # of problems, the e)
+      } else if (reactant2 !== undefined && product2 !== undefined){
          if (rct1Coef === reactant1coef.counter && rct2Coef === reactant2coef.counter
-          && prdt1Coef === product1coef.counter && prdt2Coef === product2coef.counter) {
+          && prdt1Coef === product1coef.counter && prdt2Coef === product2coef.counter) { 
           //problemCounter sets the number of problems to finish
          if(problemCounter < 10) {
             goodJob = game.add.text(500, 145, "Good Job");
@@ -344,9 +364,9 @@ define([
               finished = game.add.text(450, 145, "Finished Level 3!");
           }
         }
-      } else {
-        if (rct1Coef === reactant1coef.counter && rct2Coef === reactant2coef.counter
-          && prdt1Coef === product1coef.counter) {
+      } else if (product2 !== undefined){
+        if (rct1Coef === reactant1coef.counter 
+          && prdt1Coef === product1coef.counter  && prdt2Coef === product2coef.counter) {
           //problemCounter sets the number of problems to finish
          if(problemCounter < 10) {
             goodJob = game.add.text(500, 145, "Good Job");
@@ -355,9 +375,34 @@ define([
           //after doing all the set # of problems, the else finishes level 1
           } else {
               finished = game.add.text(450, 145, "Finished Level 3!");
+          }
+        }
+      } else if (product2 !== undefined && product3 !== undefined) {
+        if (rct1Coef === reactant1coef.counter 
+          && prdt1Coef === product1coef.counter && prdt2Coef === product2coef.counter && prdt3Coef === product3coef.counter) {
+          //problemCounter sets the number of problems to finish
+         if(problemCounter < 10) {
+            goodJob = game.add.text(500, 145, "Good Job");
+            button = this.game.add.button(500, 175, 'stirbar', nextProblem);
+            button.scale.setTo(2);
+          //after doing all the set # of problems, the else finishes level 1
+          } else {
+              finished = game.add.text(450, 145, "Finished Level 3!");
+            }
+          }
+          } else {
+
+            if(problemCounter < 10) {
+                goodJob = game.add.text(500, 145, "Good Job");
+                button = this.game.add.button(500, 175, 'stirbar', nextProblem);
+                button.scale.setTo(2);
+          }
+         
           }
         }
       }
+
+     
     
 
     }//closes the update function
